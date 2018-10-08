@@ -1,0 +1,7 @@
+ms_platform:
+    resource: "@MSPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

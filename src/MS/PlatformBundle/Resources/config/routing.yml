@@ -1,0 +1,50 @@
+ms_platform_homepage:
+    path:     /
+    defaults: { _controller: MSPlatformBundle:Default:index }
+
+#----------------Admin COURSE-----------------------
+ms_admin_homepage:
+    path:     /admin
+    defaults: { _controller: MSPlatformBundle:Admin:index }
+
+ms_admin_addCourse:
+    path:      /admin/addCourse
+    defaults: { _controller: MSPlatformBundle:Admin:addCourse }
+
+ms_admin_editCourse:
+    path:      /admin/editCourse/{id}
+    defaults: { _controller: MSPlatformBundle:Admin:editCourse }
+    requirements:
+        id: \d+
+
+ms_admin_deleteCourse:
+    path:      /admin/deleteCourse/{id}
+    defaults: { _controller: MSPlatformBundle:Admin:deleteCourse }
+    requirements:
+        id: \d+
+
+#----------------Admin SUBJECT-----------------------
+ms_admin_addSubject:
+    path:      /admin/addSubject
+    defaults: { _controller: MSPlatformBundle:Admin:addSubject }
+
+ms_admin_editSubject:
+    path:      /admin/editSubject/{id}
+    defaults: { _controller: MSPlatformBundle:Admin:editSubject }
+    requirements:
+        id: \d+
+
+ms_admin_deleteSubject:
+    path:      /admin/deleteSubject/{id}
+    defaults: { _controller: MSPlatformBundle:Admin:deleteSubject }
+    requirements:
+        id: \d+
+
+#----------------Student SIMULATION-----------------------
+ms_student_homepage:
+    path:     /student
+    defaults: { _controller: MSPlatformBundle:Student:index }
+
+ms_student_simulation:
+    path:     /student/simulation
+    defaults: { _controller: MSPlatformBundle:Student:simulation }
