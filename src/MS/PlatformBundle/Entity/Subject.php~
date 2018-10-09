@@ -4,6 +4,7 @@ namespace MS\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Subject
@@ -14,6 +15,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Subject
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->teachers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
     /**
      * @var int
      *
@@ -51,8 +61,16 @@ class Subject
      */
     private $coef;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Teacher", cascade={"persist"})
+     */
+    private $teachers;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Course", mappedBy="subjects")
+     */
+    private $courses;
 
     /**
      * Get id
@@ -111,5 +129,63 @@ class Subject
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set coef
+     *
+     * @param integer $coef
+     *
+     * @return Subject
+     */
+    public function setCoef($coef)
+    {
+        $this->coef = $coef;
+
+        return $this;
+    }
+
+    /**
+     * Get coef
+     *
+     * @return integer
+     */
+    public function getCoef()
+    {
+        return $this->coef;
+    }
+
+
+    /**
+     * Add teacher
+     *
+     * @param \MS\PlatformBundle\Entity\Teacher $teacher
+     *
+     * @return Subject
+     */
+    public function addTeacher(\MS\PlatformBundle\Entity\Teacher $teacher)
+    {
+        $this->teachers[] = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Remove teacher
+     *
+     * @param \MS\PlatformBundle\Entity\Teacher $teacher
+     */
+    public function removeTeacher(\MS\PlatformBundle\Entity\Teacher $teacher)
+    {
+        $this->teachers->removeElement($teacher);
+    }
+
+    /**
+     * Get teachers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeachers()
+    {
+        return $this->teachers;
+    }
+}

@@ -11,6 +11,14 @@ class LoadSubject implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         // Liste des noms de catégorie à ajouter
+
+        $types = array(
+            'A',
+            'B',
+            'C',
+        );
+
+
         $names = array(
             'Mathématiques',
             'Base de données',
@@ -23,17 +31,12 @@ class LoadSubject implements FixtureInterface
             '4',
         );
 
-        $teacherNames = array(
-            'Dupont',
-            'Dupuis',
-            'Lala',
-        );
 
         for ($i = 0; $i < 3; $i++) {
             $subject = new Subject();
+            $subject->setType($types[$i]);
             $subject->setName($names[$i]);
             $subject->setCoef($coefs[$i]);
-            $subject->setTeacherName($teacherNames[$i]);;
             $manager->persist($subject);
         }
 

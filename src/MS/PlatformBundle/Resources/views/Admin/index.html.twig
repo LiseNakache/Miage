@@ -98,7 +98,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    {#<th>ID</th>#}
+                    <th>TYPE</th>
                     <th>MATIERE</th>
                     <th>COEFFICIENT</th>
                     <th>PROFESSEUR</th>
@@ -107,10 +107,19 @@
         <tbody>
     {% for subject in subjectslist %}
             <tr>
-                {#<td>{{ subject.id }}</td>#}
+                <td>{{ subject.type }}</td>
                 <td>{{ subject.name }}</td>
                 <td>{{ subject.coef }}</td>
-                {#<td>{{ subject.teacherName }}</td>#}
+                <td>
+
+                    <table>
+                        {% for teacher in subject.teachers %}
+                            <tr>
+                                    <td>{{ teacher.name }}{% if not loop.last %}, {% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
                 <td>
                     <a class="btn btn-default" href="{{ path('ms_admin_editSubject', {'id': subject.id}) }}">
                         <i class="glyphicon glyphicon-edit"></i>

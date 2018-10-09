@@ -48,3 +48,8 @@ ms_student_homepage:
 ms_student_simulation:
     path:     /student/simulation
     defaults: { _controller: MSPlatformBundle:Student:simulation }
+
+#----------------Teacher-----------------------
+ms_teacher_homepage:
+    path:     /teacher
+    defaults: { _controller: MSPlatformBundle:Teacher:index }

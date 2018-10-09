@@ -81,11 +81,11 @@ class Student
     /**
      * Add course
      *
-     * @param \miageSimulation\PlatformBundle\Entity\Course $course
+     * @param \MS\PlatformBundle\Entity\Course $course
      *
      * @return Student
      */
-    public function addCourse(\miageSimulation\PlatformBundle\Entity\Course $course)
+    public function addCourse(\MS\PlatformBundle\Entity\Course $course)
     {
         $this->courses[] = $course;
 
@@ -95,9 +95,9 @@ class Student
     /**
      * Remove course
      *
-     * @param \miageSimulation\PlatformBundle\Entity\Course $course
+     * @param \MS\PlatformBundle\Entity\Course $course
      */
-    public function removeCourse(\miageSimulation\PlatformBundle\Entity\Course $course)
+    public function removeCourse(\MS\PlatformBundle\Entity\Course $course)
     {
         $this->courses->removeElement($course);
     }

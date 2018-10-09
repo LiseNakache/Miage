@@ -22,12 +22,12 @@ class SubjectType extends AbstractType
             ->add('type', TextType::class)
             ->add('name', TextType::class)
             ->add('coef', NumberType::class)
-//            ->add('teacher', EntityType::class, array(
-//                'class'        => 'MSPlatformBundle:Teacher',
-//                'choice_label' => 'name',
-//                'multiple'     => true,
-//                'expanded'     => true,
-//            ))
+            ->add('teachers', EntityType::class, array(
+                'class'        => 'MSPlatformBundle:Teacher',
+                'choice_label' => 'name',
+                'multiple'     => true,
+                'expanded'     => true,
+            ))
             ->add('save',      SubmitType::class);
 
     }/**
