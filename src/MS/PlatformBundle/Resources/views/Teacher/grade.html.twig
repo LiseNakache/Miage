@@ -1,0 +1,20 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body_forum %}
+    <div class="container">
+        {#<div class="row"><h1>Voici la page de l'enseignant</h1></div>#}
+        <div class="row">
+            {{ dump(grade) }}
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

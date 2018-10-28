@@ -85,7 +85,7 @@ class Student
      *
      * @return Student
      */
-    public function addCourse(\MS\PlatformBundle\Entity\Course $course)
+    public function addCourse($course)
     {
         $this->courses[] = $course;
 
@@ -97,7 +97,7 @@ class Student
      *
      * @param \MS\PlatformBundle\Entity\Course $course
      */
-    public function removeCourse(\MS\PlatformBundle\Entity\Course $course)
+    public function removeCourse($course)
     {
         $this->courses->removeElement($course);
     }

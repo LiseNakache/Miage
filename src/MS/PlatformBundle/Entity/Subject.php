@@ -20,7 +20,8 @@ class Subject
      */
     public function __construct()
     {
-        $this->teachers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->teachers = new ArrayCollection();
+        $this->grades = new ArrayCollection();
     }
 
 
@@ -62,7 +63,7 @@ class Subject
     private $coef;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Teacher", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Teacher", cascade={"persist"}, inversedBy="subjects")
      */
     private $teachers;
 
@@ -71,6 +72,12 @@ class Subject
      * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Course", mappedBy="subjects")
      */
     private $courses;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="MS\PlatformBundle\Entity\Grade", mappedBy="subject")
+     */
+    private $grades;
 
     /**
      * Get id
@@ -162,7 +169,7 @@ class Subject
      *
      * @return Subject
      */
-    public function addTeacher(\MS\PlatformBundle\Entity\Teacher $teacher)
+    public function addTeacher($teacher)
     {
         $this->teachers[] = $teacher;
 
@@ -174,7 +181,7 @@ class Subject
      *
      * @param \MS\PlatformBundle\Entity\Teacher $teacher
      */
-    public function removeTeacher(\MS\PlatformBundle\Entity\Teacher $teacher)
+    public function removeTeacher($teacher)
     {
         $this->teachers->removeElement($teacher);
     }
@@ -196,7 +203,7 @@ class Subject
      *
      * @return Subject
      */
-    public function addCourse(\MS\PlatformBundle\Entity\Course $course)
+    public function addCourse($course)
     {
         $this->courses[] = $course;
 
@@ -208,7 +215,7 @@ class Subject
      *
      * @param \MS\PlatformBundle\Entity\Course $course
      */
-    public function removeCourse(\MS\PlatformBundle\Entity\Course $course)
+    public function removeCourse($course)
     {
         $this->courses->removeElement($course);
     }
@@ -221,5 +228,39 @@ class Subject
     public function getCourses()
     {
         return $this->courses;
+    }
+
+    /**
+     * Add grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     *
+     * @return Subject
+     */
+    public function addGrade($grade)
+    {
+        $this->grades[] = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Remove grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     */
+    public function removeGrade($grade)
+    {
+        $this->grades->removeElement($grade);
+    }
+
+    /**
+     * Get grades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrades()
+    {
+        return $this->grades;
     }
 }

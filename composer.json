@@ -25,6 +25,7 @@
         "components/jquery": "3.1.1",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/jsrouting-bundle": "^2.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "leafo/scssphp": "~0.6",
         "patchwork/jsqueeze": "~1.0",
@@ -34,8 +35,11 @@
         "symfony/assetic-bundle": "^2.7.1",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
+        "symfony/property-access": "^3.4",
+        "symfony/serializer": "^3.4",
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
+        "symfony/var-dumper": "^3.4",
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {

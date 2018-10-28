@@ -1,0 +1,73 @@
+<?php
+
+namespace MS\PlatformBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * GradeList
+ *
+ * @ORM\Entity()
+ */
+class GradeList
+{
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Grade")
+     */
+    private $grades;
+
+    public function __construct()
+    {
+        $this->grades = new ArrayCollection();
+    }
+
+
+    /**
+     * Add grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     *
+     * @return GradeList
+     */
+    public function addGrade(\MS\PlatformBundle\Entity\Grade $grade)
+    {
+        $this->grades[] = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Remove grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     */
+    public function removeGrade(\MS\PlatformBundle\Entity\Grade $grade)
+    {
+        $this->grades->removeElement($grade);
+    }
+
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $grades
+     * @return $this
+     */
+    public function setTasks(\Doctrine\Common\Collections\Collection $grades)
+    {
+        $this->grades = $grades;
+
+        return $this;
+    }
+
+    /**
+     * Get grades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrades()
+    {
+        return $this->grades;
+    }
+}

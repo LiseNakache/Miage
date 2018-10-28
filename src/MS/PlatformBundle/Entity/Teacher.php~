@@ -88,4 +88,28 @@ class Teacher
     {
         return $this->subjects;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Teacher
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

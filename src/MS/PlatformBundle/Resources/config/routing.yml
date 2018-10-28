@@ -53,3 +53,11 @@ ms_student_simulation:
 ms_teacher_homepage:
     path:     /teacher
     defaults: { _controller: MSPlatformBundle:Teacher:index }
+
+ms_teacher_add_grades:
+    path:     /teacher/add
+    defaults: { _controller: MSPlatformBundle:Teacher:addGrades }
+    options:
+        expose: true
+    requirements:
+        _method: POST

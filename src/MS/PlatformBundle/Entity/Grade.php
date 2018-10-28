@@ -35,7 +35,7 @@ class Grade
     private $student;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MS\PlatformBundle\Entity\Subject")
+     * @ORM\ManyToOne(targetEntity="MS\PlatformBundle\Entity\Subject", inversedBy="grades")
      * @ORM\JoinColumn(nullable=false)
      */
     private $subject;
@@ -82,7 +82,7 @@ class Grade
      *
      * @return Grade
      */
-    public function setStudent(\MS\PlatformBundle\Entity\Student $student)
+    public function setStudent($student)
     {
         $this->student = $student;
 
@@ -106,7 +106,7 @@ class Grade
      *
      * @return Grade
      */
-    public function setSubject(\MS\PlatformBundle\Entity\Subject $subject)
+    public function setSubject($subject)
     {
         $this->subject = $subject;
 

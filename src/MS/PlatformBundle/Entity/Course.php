@@ -68,7 +68,7 @@ class Course
     private $subjects;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Student", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Student", cascade={"persist"}, inversedBy="courses")
      */
     private $students;
 

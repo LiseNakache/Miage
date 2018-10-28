@@ -32,7 +32,7 @@ class Student
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="miageSimulation\PlatformBundle\Entity\Course", mappedBy="students")
+     * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Course", mappedBy="students")
      */
     private $courses;
 
@@ -77,5 +77,38 @@ class Student
     {
         return $this->name;
     }
-}
 
+    /**
+     * Add course
+     *
+     * @param \MS\PlatformBundle\Entity\Course $course
+     *
+     * @return Student
+     */
+    public function addCourse(\MS\PlatformBundle\Entity\Course $course)
+    {
+        $this->courses[] = $course;
+
+        return $this;
+    }
+
+    /**
+     * Remove course
+     *
+     * @param \MS\PlatformBundle\Entity\Course $course
+     */
+    public function removeCourse(\MS\PlatformBundle\Entity\Course $course)
+    {
+        $this->courses->removeElement($course);
+    }
+
+    /**
+     * Get courses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourses()
+    {
+        return $this->courses;
+    }
+}
