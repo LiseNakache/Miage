@@ -6,9 +6,9 @@
 
 
     <div class="container">
-    <div class="row">
 
-        <div class="result"></div>
+
+        <div class="row result"></div>
 
 
         {% for subject in teacher.subjects %}
@@ -21,13 +21,14 @@
             </tr>
             </thead>
 
+            <div class="row">
             {% for student in course.students %}
                 <form >
                     <tbody>
                     <tr>
-                        <td id="{{student.id}}">{{ student.name }}</td>
-                        <td id="{{student.id}}" class="student">{{ student.id }}</td>
-                        <td><input type="number" id="{{student.id}}" class="grade" value="" min="0" max="20"/></td>
+                        <td>{{ student.name }}</td>
+                        <p class="student" hidden>{{ student.id }}</p>
+                        <td><input type="number" class="grade" value="" min="0" max="20"/></td>
                     </tr>
 
             {% endfor %}
@@ -35,10 +36,11 @@
                     </tbody>
         {% endfor %}
         {% endfor %}
-        </form>
+                </form>
+            </div>
         </table>
 
-    </div>
+
 
 </div>
 

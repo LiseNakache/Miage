@@ -15,6 +15,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
+
+
+//    public function homepageAction(Request $request)
+//    {
+////        $em = $this->getDoctrine()->getManager();
+////        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(4);
+//        return $this->render("@MSPlatform/Admin/homepage.html.twig");
+////            array('teacher' => $teacher));
+//    }
+
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -103,7 +114,7 @@ class AdminController extends Controller
             $em->remove($course);
             $em->flush();
 
-        return $this->redirectToRoute('ms_admin_homepage');
+        return $this->redirectToRoute('ms_admin_university');
     }
 
 
@@ -118,7 +129,7 @@ class AdminController extends Controller
         $em->remove($subject);
         $em->flush();
 
-        return $this->redirectToRoute('ms_admin_homepage');
+        return $this->redirectToRoute('ms_admin_university');
     }
 
 }

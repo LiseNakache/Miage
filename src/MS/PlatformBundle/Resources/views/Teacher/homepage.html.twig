@@ -22,27 +22,33 @@
 
         </div>
 
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a data-toggle="tab" href="#">Ajout des notes</a></li>
-            {#<li role="presentation"><a data-toggle="tab" href="#">Consultation des notes</a></li>#}
-            <li role="presentation"><a data-toggle="tab" href="#">Profil</a></li>
-        </ul>
-
-        <div class="tab-content ">
-            <div class="tab-pane active" id="1">
-                {% include '@MSPlatform/Teacher/studentGrade.html.twig' %}
+        <div class="row">
+        <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>
+                    <li><a href="{{ path('ms_teacher_show_grades') }}" data-toggle="tab">Notes ajoutées</a></li>
+                    <li><a href="#profil" data-toggle="tab">Profil</a></li>
+                </ul>
             </div>
-            <div class="tab-pane" id="2">
-                <h3>Notice the gap between the content and tab after applying a background color</h3>
-            </div>
-            <div class="tab-pane" id="3">
-                <h3>add clearfix to tab-content (see the css)</h3>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="add_grade">
+                        {% include '@MSPlatform/Teacher/studentGrade.html.twig' %}
+                    </div>
+                    <div class="tab-pane fade" id="edit_grade">
+                        {#{% include '@MSPlatform/Teacher/allGrades.html.twig' %}#}
+                    </div>
+                    <div class="tab-pane fade" id="profil">Default 3</div>
+                </div>
             </div>
         </div>
-
+        </div>
     </div>
 
-    {% block javascripts %}
-    {% endblock %}
+    {% stylesheets 'bundles/msplatform/css/homepage.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 {% endblock %}
+

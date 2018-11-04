@@ -1,11 +1,9 @@
-{% extends "@MSPlatform/layout.html.twig" %}
-{#"@miageSimulationAdmin/Admin/index.html.twig"#}
+{% extends "@MSPlatform/Admin/homepage.html.twig" %}
+
 {% block title %}{{ parent() }} - Index{% endblock %}
 
-{% block body_forum %}
+{% block body_university %}
 <div class="container">
-    <h1>index.html.twig
-        Voici la page de l'admin</h1><br>
     <h2>Filière
         <a class="btn btn-default" href="{{ path('ms_admin_addCourse') }}">
             <i class="glyphicon glyphicon-plus"></i>
@@ -14,7 +12,7 @@
     </h2>
 
 
-    <div class="row">
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -29,10 +27,10 @@
             <th>NOMBRE D'ETUDIANT</th>
         </tr>
         </thead>
+        <div class="row">
         <tbody>
         {% for course in courseslist %}
             <tr>
-                {#<td>{{ course.id }}</td>#}
                 <td>{{ course.type }}</td>
                 <td>{{ course.name }}</td>
                 <td>{{ course.dateStart|date('m/Y') }}-{{ course.dateEnd|date('m/Y') }}</td>
@@ -82,9 +80,11 @@
                 </td>
             </tr>
         {% endfor %}
+
         </tbody>
+        </div>
         </table>
-    </div>
+
 
 
     <h2>Matières
@@ -94,7 +94,7 @@
         </a>
     </h2>
 
-    <div class="row">
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -104,6 +104,7 @@
                     <th>PROFESSEUR</th>
                 </tr>
             </thead>
+        <div class="row">
         <tbody>
     {% for subject in subjectslist %}
             <tr>
@@ -135,8 +136,9 @@
             </tr>
     {% endfor %}
         </tbody>
+        </div>
         </table>
-    </div>
+
 </div>
 {% endblock %}
 

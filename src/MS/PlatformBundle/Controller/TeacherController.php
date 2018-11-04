@@ -47,8 +47,6 @@ class TeacherController extends Controller
             }
 
 
-
-
             if ($request->isXmlHttpRequest() && ($gradeExist == false)){
                 $grades = $request->request->get('allGrades');
                 if (!empty($grades)) {
@@ -76,8 +74,37 @@ class TeacherController extends Controller
                 return new JsonResponse($result) ;
             }
 
+    }
 
+
+    public function showGradesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(4);
+        return $this->render("@MSPlatform/Teacher/allGrades.html.twig",
+            array('teacher' => $teacher));
+    }
+
+    public function editGradeAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($request->isXmlHttpRequest()){
+            $grades = $request->request->get('allGrades');
+            if (!empty($grades)) {
+                $length = count($grades);
+                for($i = 0; $i <  $length ; $i++ ) {
+                    $gradeId = $request->request->get('allGrades')[$i]['gradeId'];
+                    $gradeValue = $request->request->get('allGrades')[$i]['grade'];
+                    $editGrade = $em->getRepository('MSPlatformBundle:Grade')->find($gradeId);
+                    $editGrade ->  setGrade($gradeValue);
+                    $em->flush();
+                }
+            }
+            $result = ['output' => 'La ou Les notes ont bien été modifiées'];
+            return new JsonResponse($result) ;
+        }
 
     }
-}
 
+}

@@ -9,31 +9,37 @@
 {% block body_forum %}
     <div class="container">
         <div class="row"><h1>Voici la page de l'étudiant</h1></div>
-    <div class="row">
-        <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.name }}</h3>
-    </div>
+        <div class="row">
+            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.name }}</h3>
+        </div>
 
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a data-toggle="tab" href="#">Simulation</a></li>
-            <li role="presentation"><a data-toggle="tab" href="#">Consultation des notes</a></li>
-            <li role="presentation"><a data-toggle="tab" href="#">Profil</a></li>
-        </ul>
-
-        <div class="tab-content ">
-            <div class="tab-pane active" id="1">
-                {% include '@MSPlatform/Student/index.html.twig' %}
-            </div>
-            <div class="tab-pane" id="2">
-                <h3>Notice the gap between the content and tab after applying a background color</h3>
-            </div>
-            <div class="tab-pane" id="3">
-                <h3>add clearfix to tab-content (see the css)</h3>
+        <div class="row">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#add_grade" data-toggle="tab">Simulation</a></li>
+                        <li><a href="#edit_grade" data-toggle="tab">Consultation des notes</a></li>
+                        <li><a href="#profil" data-toggle="tab">Profil</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="add_grade">
+                            {% include '@MSPlatform/Student/index.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade" id="edit_grade">
+                            Default 2
+                        </div>
+                        <div class="tab-pane fade" id="profil">Default 3</div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 
-{% block javascripts %}
-{% endblock %}
+    {% stylesheets 'bundles/msplatform/css/homepage.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 {% endblock %}

@@ -1,8 +1,9 @@
 var allGrades = [];
 
-var addGrade = function (grade,student) {
+var editGrade = function (grade,gradeId,student) {
     var resutlItem = {
         grade: grade,
+        gradeId : gradeId,
         student: student,
     };
     allGrades.push(resutlItem);
@@ -10,11 +11,16 @@ var addGrade = function (grade,student) {
 
 var buttonClicked = function () {
     var grade = $('.grade');
-    var student = $('.student');
+    var gradeId = $('.grade_id');
+    var student = $('.student_id');
 
 
     for(var i = 0; i < grade.length; i++){
-        addGrade($(grade[i]).val(), $(student[i]).text());
+        if ( !$(grade[i]).val() ) {
+            continue;
+        } else {
+            editGrade($(grade[i]).val(), $(gradeId[i]).text(), $(student[i]).text());
+        }
     }
 
 
@@ -30,7 +36,7 @@ $("document").ready(function(){
         buttonClicked();
         $.ajax({
             type: "POST",
-            url: Routing.generate('ms_teacher_add_grades'),
+            url: Routing.generate('ms_teacher_edit_grade'),
             data: {"allGrades" : allGrades, "subjectId" : subject},
             async: true,
 

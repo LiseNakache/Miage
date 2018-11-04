@@ -3,7 +3,10 @@ ms_platform_homepage:
     defaults: { _controller: MSPlatformBundle:Default:index }
 
 #----------------Admin COURSE-----------------------
-ms_admin_homepage:
+#ms_admin_homepage:
+#    path:     /admin
+#    defaults: { _controller: MSPlatformBundle:Admin:homepage }
+ms_admin_university:
     path:     /admin
     defaults: { _controller: MSPlatformBundle:Admin:index }
 
@@ -57,6 +60,18 @@ ms_teacher_homepage:
 ms_teacher_add_grades:
     path:     /teacher/add
     defaults: { _controller: MSPlatformBundle:Teacher:addGrades }
+    options:
+        expose: true
+    requirements:
+        _method: POST
+
+ms_teacher_show_grades:
+    path:     /teacher/showGrades
+    defaults: { _controller: MSPlatformBundle:Teacher:showGrades }
+
+ms_teacher_edit_grade:
+    path:      /teacher/editGrade
+    defaults: { _controller: MSPlatformBundle:Teacher:editGrade }
     options:
         expose: true
     requirements:
