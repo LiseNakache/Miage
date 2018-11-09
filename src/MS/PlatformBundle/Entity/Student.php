@@ -36,6 +36,10 @@ class Student
      */
     private $courses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MS\PlatformBundle\Entity\Grade", mappedBy="student")
+     */
+    private $grades;
 
     /**
      * Constructor
@@ -111,5 +115,39 @@ class Student
     public function getCourses()
     {
         return $this->courses;
+    }
+
+    /**
+     * Add grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     *
+     * @return Student
+     */
+    public function addGrade($grade)
+    {
+        $this->grades[] = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Remove grade
+     *
+     * @param \MS\PlatformBundle\Entity\Grade $grade
+     */
+    public function removeGrade($grade)
+    {
+        $this->grades->removeElement($grade);
+    }
+
+    /**
+     * Get grades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrades()
+    {
+        return $this->grades;
     }
 }

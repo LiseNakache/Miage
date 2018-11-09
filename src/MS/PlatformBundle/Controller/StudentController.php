@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $student = $em->getRepository('MSPlatformBundle:Student')->find(1);
+        $student = $em->getRepository('MSPlatformBundle:Student')->find(19);
         return $this->render("@MSPlatform/Student/homepage.html.twig",
             array('student' => $student));
     }
@@ -23,11 +23,18 @@ class StudentController extends Controller
     public function simulationAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $student = $em->getRepository('MSPlatformBundle:Student')->find(1);
+        $student = $em->getRepository('MSPlatformBundle:Student')->find(19);
 
 
         return $this->render("@MSPlatform/Student/index.html.twig",
             array('student' => $student));
     }
 
+    public function getGradesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $student = $em->getRepository('MSPlatformBundle:Student')->find(19);
+        return $this->render("@MSPlatform/Student/getGrades.html.twig",
+            array('student' => $student));
+    }
 }

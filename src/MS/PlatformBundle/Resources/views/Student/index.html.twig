@@ -7,12 +7,6 @@
 
     {% for course in student.courses %}
 
-    <h3>{{ course.type }}-{{ course.name }} -- Coefficient Total :
-        <span class="final_coef">{{ course.totalCoef }}</span>
-    </h3>
-
-
-    <div class="row">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -23,14 +17,15 @@
         </thead>
 
 
+    <div class="row">
     {% for subject in course.subjects %}
 
     <form action="" method="post">
                 <tbody>
                 <tr>
                     <td><label for="subjectName">{{ subject.name }}</label></td>
-                    <td id="{{ subject.id}}" class="coef">{{ subject.coef}}</td>
-                    <td><input type="number" id="{{subject.id}}" class="grade" value="" min="0" max="20"/></td>
+                    <td class="coef">{{ subject.coef}}</td>
+                    <td><input type="number" class="grade" value="" min="0" max="20"/></td>
                 </tr>
                 </tbody>
 
@@ -38,9 +33,10 @@
         {% endfor %}
 
     </form>
+    </div>
     </table>
         <input type="button" name="submit" value="Results" id="button" />
-</div>
+
     <h3 class="result"></h3>
 </div>
 

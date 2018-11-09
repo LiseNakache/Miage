@@ -25,7 +25,7 @@ class TeacherController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(4);
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(5);
         return $this->render("@MSPlatform/Teacher/homepage.html.twig",
             array('teacher' => $teacher));
     }
@@ -80,8 +80,8 @@ class TeacherController extends Controller
     public function showGradesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(4);
-        return $this->render("@MSPlatform/Teacher/allGrades.html.twig",
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(5);
+        return $this->render("@MSPlatform/Teacher/editGrades.html.twig",
             array('teacher' => $teacher));
     }
 
@@ -90,12 +90,12 @@ class TeacherController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if ($request->isXmlHttpRequest()){
-            $grades = $request->request->get('allGrades');
+            $grades = $request->request->get('allGrades_edit');
             if (!empty($grades)) {
                 $length = count($grades);
                 for($i = 0; $i <  $length ; $i++ ) {
-                    $gradeId = $request->request->get('allGrades')[$i]['gradeId'];
-                    $gradeValue = $request->request->get('allGrades')[$i]['grade'];
+                    $gradeId = $request->request->get('allGrades_edit')[$i]['gradeId'];
+                    $gradeValue = $request->request->get('allGrades_edit')[$i]['grade_edit'];
                     $editGrade = $em->getRepository('MSPlatformBundle:Grade')->find($gradeId);
                     $editGrade ->  setGrade($gradeValue);
                     $em->flush();

@@ -32,9 +32,12 @@
 }
 
 
+/********************************************************************/
+/*** RESULT AJAX ***/
 
-
-
+.result_add, .result_edit, .result{
+    text-align: center;
+}
 
 
 

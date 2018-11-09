@@ -13,19 +13,22 @@ var count = function () {
     var finalResult = 0;
     var average = 0;
     var totalCoef = $('.final_coef').text();
+    console.log(totalCoef);
     $('.result').empty();
 
     for (var i = 0; i < result.length; i++) {
         var multiply = result[i].grade * result[i].coef;
         finalResult += multiply;
-    }
 
+    }
+    console.log(finalResult);
     average = finalResult / totalCoef;
+    console.log(average);
 
     if (average < 10){
-    $('.result').append("Votre moyenne est de " +  average.toFixed(2) + " Vous êtes en rattrapage " );
+    $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+ "Votre moyenne est de " +  average.toFixed(2) + " Vous êtes en rattrapage "+ '<h3>' );
     } else {
-        $('.result').append("Votre moyenne est de " +  average.toFixed(2) + " Vous passez en classe supérieure " );
+        $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+"Votre moyenne est de " +  average.toFixed(2) + " Vous passez en classe supérieure "+ '<h3>'  );
     }
 };
 

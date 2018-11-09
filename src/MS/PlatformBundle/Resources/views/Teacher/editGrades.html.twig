@@ -9,7 +9,6 @@
             <div class="row result"></div>
 
             {% for subject in teacher.subjects %}
-            <p class="subject" hidden>{{subject.id}}</p>
             {% for course in subject.courses %}
             <table class="table table-stripped table-hover">
                 <thead>
@@ -22,13 +21,13 @@
 
                 <div class="row">
                 {% for grade in subject.grades %}
-                    <form >
+                    <form id="form_edit">
                         <tbody>
                         <tr>
                             <p class="grade_id" hidden>{{ grade.id }}</p>
-                            <td>Student : {{ grade.student.name}}</td>
+                            <td>{{ grade.student.name}}</td>
                             <td>{{ grade.grade}}</td>
-                            <td><input type="number" class="grade" value="" min="0" max="20"/></td>
+                            <td><input type="number" class="grade_edit" value="" min="0" max="20"/></td>
                         </tr>
                     {% endfor %}
                         <td><input type="submit" value="Modifier" /></td>

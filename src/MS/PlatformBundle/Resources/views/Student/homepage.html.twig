@@ -10,25 +10,30 @@
     <div class="container">
         <div class="row"><h1>Voici la page de l'étudiant</h1></div>
         <div class="row">
-            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.name }}</h3>
+            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.name }}
+                <br>{% for course in student.courses %}
+                    {{ course.type }}-{{ course.name }}
+                        <span class="final_coef" hidden>{{ course.totalCoef }}</span>
+                {% endfor %}
+            </h3>
         </div>
 
         <div class="row">
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#add_grade" data-toggle="tab">Simulation</a></li>
-                        <li><a href="#edit_grade" data-toggle="tab">Consultation des notes</a></li>
+                        <li class="active"><a href="#simulation" data-toggle="tab">Simulation</a></li>
+                        <li><a href="#get_grades" data-toggle="tab">Consultation des notes</a></li>
                         <li><a href="#profil" data-toggle="tab">Profil</a></li>
                     </ul>
                 </div>
                 <div class="panel-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="add_grade">
+                        <div class="tab-pane fade in active" id="simulation">
                             {% include '@MSPlatform/Student/index.html.twig' %}
                         </div>
-                        <div class="tab-pane fade" id="edit_grade">
-                            Default 2
+                        <div class="tab-pane fade" id="get_grades">
+                            {% include '@MSPlatform/Student/getGrades.html.twig' %}
                         </div>
                         <div class="tab-pane fade" id="profil">Default 3</div>
                     </div>

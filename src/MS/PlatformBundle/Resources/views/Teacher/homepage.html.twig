@@ -1,10 +1,6 @@
 {% extends "@MSPlatform/layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Index{% endblock %}
-
-{% block stylesheets %}
-{% endblock %}
-
+{% block title %}{{ parent() }} - Teacher{% endblock %}
 
 {% block body_forum %}
     <div class="container">
@@ -26,18 +22,20 @@
         <div class="panel with-nav-tabs panel-default">
             <div class="panel-heading">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>
-                    <li><a href="{{ path('ms_teacher_show_grades') }}" data-toggle="tab">Notes ajoutées</a></li>
+                    <li><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>
+                    <li><a href="#edit_grade" data-toggle="tab">Notes ajoutées</a></li>
                     <li><a href="#profil" data-toggle="tab">Profil</a></li>
                 </ul>
             </div>
             <div class="panel-body">
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="add_grade">
-                        {% include '@MSPlatform/Teacher/studentGrade.html.twig' %}
+                    <div class="tab-pane fade" id="add_grade">
+                        <div class="col-md-offset-2 col-md-8 result_add"></div>
+                        {% include '@MSPlatform/Teacher/addGrades.html.twig' %}
                     </div>
                     <div class="tab-pane fade" id="edit_grade">
-                        {#{% include '@MSPlatform/Teacher/allGrades.html.twig' %}#}
+                        <div class="col-md-offset-2 col-md-8 result_edit"></div>
+                        {% include '@MSPlatform/Teacher/editGrades.html.twig' %}
                     </div>
                     <div class="tab-pane fade" id="profil">Default 3</div>
                 </div>

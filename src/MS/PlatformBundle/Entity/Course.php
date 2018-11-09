@@ -62,6 +62,7 @@ class Course
      */
     private $dateEnd;
 
+
     /**
      * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Subject", cascade={"persist"}, inversedBy="courses")
      */

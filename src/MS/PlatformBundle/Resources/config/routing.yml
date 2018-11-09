@@ -52,6 +52,10 @@ ms_student_simulation:
     path:     /student/simulation
     defaults: { _controller: MSPlatformBundle:Student:simulation }
 
+ms_student_get_grades:
+    path:     /student/getGrades
+    defaults: { _controller: MSPlatformBundle:Student:getGrades }
+
 #----------------Teacher-----------------------
 ms_teacher_homepage:
     path:     /teacher

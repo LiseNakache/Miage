@@ -1,15 +1,11 @@
-{% extends "@MSPlatform/layout.html.twig" %}
+{% extends "@MSPlatform/Teacher/homepage.html.twig" %}
 
 {% block title %}{{ parent() }} - Index{% endblock %}
 
-{% block body_forum %}
+{% block body %}
 
 
     <div class="container">
-
-
-        <div class="row result"></div>
-
 
         {% for subject in teacher.subjects %}
         {% for course in subject.courses %}
@@ -23,7 +19,7 @@
 
             <div class="row">
             {% for student in course.students %}
-                <form >
+                <form id="form_add" >
                     <tbody>
                     <tr>
                         <td>{{ student.name }}</td>

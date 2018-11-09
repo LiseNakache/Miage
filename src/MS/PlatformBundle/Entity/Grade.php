@@ -29,7 +29,7 @@ class Grade
     private $grade;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MS\PlatformBundle\Entity\Student")
+     * @ORM\ManyToOne(targetEntity="MS\PlatformBundle\Entity\Student", inversedBy="grades")
      * @ORM\JoinColumn(nullable=false)
      */
     private $student;
