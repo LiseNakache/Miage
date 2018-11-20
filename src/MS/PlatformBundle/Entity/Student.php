@@ -31,6 +31,9 @@ class Student
      */
     private $name;
 
+
+
+
     /**
      * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Course", mappedBy="students")
      */

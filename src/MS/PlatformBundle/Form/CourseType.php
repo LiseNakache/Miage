@@ -42,6 +42,15 @@ class CourseType extends AbstractType
                 'choice_label' => 'name',
                 'multiple'     => true,
                 'expanded'     => true,
+                'label'  => 'Semestre 1',
+            ))
+
+            ->add('subjects', EntityType::class, array(
+                'class'        => 'MSPlatformBundle:Subject',
+                'choice_label' => 'name',
+                'multiple'     => true,
+                'expanded'     => true,
+                'label'  => 'Semestre 2',
             ))
             ->add('save',      SubmitType::class);
     }

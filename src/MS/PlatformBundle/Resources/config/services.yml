@@ -1,4 +1,8 @@
-services:
+#services:
 #    ms_platform.example:
 #        class: MS\PlatformBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+services:
+  redirect.after.login:
+    class: MS\PlatformBundle\Listener\AfterLoginRedirection
+    arguments: ['@router']

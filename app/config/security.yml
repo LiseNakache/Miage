@@ -1,11 +1,19 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
+    encoders:
+        MS\PlatformBundle\Entity\User : bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_TEACHER: ROLE_USER
+        ROLE_STUDENT: ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,10 +23,25 @@ security:
 
         main:
             anonymous: ~
+            logout: ~
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+            form_login:
+                csrf_token_generator: security.csrf.token_manager
+                success_handler: redirect.after.login
+            remember_me:
+                secret: '%secret%'
+
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/teacher, roles: ROLE_TEACHER }
+        - { path: ^/student, roles: ROLE_STUDENT }
+#        - { path: /admin, roles: ROLE_ADMIN, IS_AUTHENTICATED_REMEMBERED }
+
+
