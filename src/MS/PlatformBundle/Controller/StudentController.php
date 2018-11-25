@@ -16,13 +16,19 @@ class StudentController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 //        $user = $this->container->get('security.context')->getToken()->getUser();
-//        $currentUser = $user->getId();
-//        $student = $em->getRepository('MSPlatformBundle:Student')->find($currentUser);
-        $student = $em->getRepository('MSPlatformBundle:Student')->find(19);
+        $currentUser = $user->getId();
+        $student = $em->getRepository('MSPlatformBundle:Student')->find($currentUser);
+//        $student = $em->getRepository('MSPlatformBundle:Student')->find(19);
         return $this->render("@MSPlatform/Student/homepage.html.twig",
             array('student' => $student));
 
+//        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+//{
+//    $user = $this->container->get('security.token_storage')->getToken()->getUser();
+//    $username = $user->getUsername();
+//}
 
 
     }

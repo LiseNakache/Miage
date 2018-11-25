@@ -25,7 +25,9 @@ class TeacherController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(5);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $user->getId();
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find($currentUser);
         return $this->render("@MSPlatform/Teacher/homepage.html.twig",
             array('teacher' => $teacher));
     }
@@ -80,7 +82,9 @@ class TeacherController extends Controller
     public function showGradesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(5);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $user->getId();
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find($currentUser);
         return $this->render("@MSPlatform/Teacher/editGrades.html.twig",
             array('teacher' => $teacher));
     }

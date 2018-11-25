@@ -3,6 +3,7 @@
 namespace MS\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use MS\PlatformBundle\Entity\Teacher;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +25,8 @@ class SubjectType extends AbstractType
             ->add('coef', NumberType::class)
             ->add('teachers', EntityType::class, array(
                 'class'        => 'MSPlatformBundle:Teacher',
-                'choice_label' => 'name',
+                'choice_label' => function (Teacher $teacher) {
+                                return $teacher->getFirstName() . ' ' . $teacher->getLastName();},
                 'multiple'     => true,
                 'expanded'     => true,
             ))

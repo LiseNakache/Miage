@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row"><h1>Voici la page de l'étudiant</h1></div>
         <div class="row">
-            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.name }}
+            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ student.firstname }} {{ student.lastname }}
                 <br>{% for course in student.courses %}
                     {{ course.type }}-{{ course.name }}
                         <span class="final_coef" hidden>{{ course.totalCoef }}</span>

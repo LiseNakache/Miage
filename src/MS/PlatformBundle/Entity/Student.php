@@ -14,25 +14,39 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Student
 {
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->courses = new ArrayCollection();
+    }
+
+
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="first_name", type="string", length=255)
      * @Assert\NotBlank()
      */
-    private $name;
+    private $first_name;
 
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $last_name;
 
     /**
      * @ORM\ManyToMany(targetEntity="MS\PlatformBundle\Entity\Course", mappedBy="students")
@@ -43,13 +57,6 @@ class Student
      * @ORM\OneToMany(targetEntity="MS\PlatformBundle\Entity\Grade", mappedBy="student")
      */
     private $grades;
-
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->courses = new ArrayCollection();
-    }
 
 
     /**
@@ -62,29 +69,71 @@ class Student
         return $this->id;
     }
 
+
     /**
-     * Set name
+     * Set id
      *
-     * @param string $name
+     * @param integer $id
      *
      * @return Student
      */
-    public function setName($name)
+    public function setId($id)
     {
-        $this->name = $name;
+        $this->id = $id;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Student
+     */
+    public function setFirstName($firstName)
+    {
+        $this->first_name = $firstName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get firstName
      *
      * @return string
      */
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->first_name;
     }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Student
+     */
+    public function setLastName($lastName)
+    {
+        $this->last_name = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
 
     /**
      * Add course
@@ -153,4 +202,6 @@ class Student
     {
         return $this->grades;
     }
+
+
 }

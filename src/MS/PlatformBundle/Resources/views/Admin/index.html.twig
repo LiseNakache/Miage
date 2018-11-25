@@ -116,7 +116,7 @@
                     <table>
                         {% for teacher in subject.teachers %}
                             <tr>
-                                    <td>{{ teacher.name }}{% if not loop.last %}, {% endif %}</td>
+                                    <td>{{ teacher.firstname }} {{ teacher.lastname }}{% if not loop.last %}, {% endif %}</td>
                             </tr>
                         {% endfor %}
                     </table>

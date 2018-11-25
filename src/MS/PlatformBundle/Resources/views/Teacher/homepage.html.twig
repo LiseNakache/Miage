@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row"><h1>Voici la page de l'enseignant</h1></div>
         <div class="row">
-            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ teacher.name }} -
+            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ teacher.firstname }}  {{ teacher.lastname }}
                 {% for subject in teacher.subjects %}
                     {{ subject.name}}
                     <p class="subject" hidden>{{subject.id}}</p>
