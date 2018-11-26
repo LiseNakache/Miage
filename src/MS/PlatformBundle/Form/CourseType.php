@@ -3,6 +3,7 @@
 namespace MS\PlatformBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use MS\PlatformBundle\Entity\Student;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -33,7 +34,8 @@ class CourseType extends AbstractType
             ))
             ->add('students', EntityType::class, array(
                 'class'        => 'MSPlatformBundle:Student',
-                'choice_label' => 'name',
+                'choice_label' => function (Student $student) {
+                                return $student->getFirstName() . ' ' . $student->getLastName();},
                 'multiple'     => true,
                 'expanded'     => true,
             ))
