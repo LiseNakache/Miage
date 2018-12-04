@@ -8,7 +8,7 @@ use MS\PlatformBundle\Form\CourseType;
 use MS\PlatformBundle\Form\CourseEditType;
 use MS\PlatformBundle\Form\SubjectType;
 use MS\PlatformBundle\Form\SubjectEditType;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -29,8 +29,13 @@ class AdminController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $subjectslist = $em->getRepository('MSPlatformBundle:Subject')->findAll();
-        $courseslist = $em->getRepository('MSPlatformBundle:Course')->findAll();
+        //Recherche par ordre alphabetique
+        $subjectslist = $em->getRepository('MSPlatformBundle:Subject')->findBy(
+            array(),
+            array('type' => 'ASC'));
+        $courseslist = $em->getRepository('MSPlatformBundle:Course')->findBy(
+            array(),
+            array('type' => 'ASC'));
         return $this->render("@MSPlatform/Admin/index.html.twig",
             array('subjectslist' => $subjectslist, 'courseslist' => $courseslist));
     }
@@ -44,7 +49,13 @@ class AdminController extends Controller
           $em = $this->getDoctrine()->getManager();
           $em->persist($course);
           $em->flush();
+
+            //Flash msg si la filière a été créee
+              $this->addFlash('success', 'Filière créee!');
+              return $this->redirectToRoute('ms_admin_addCourse');
           }
+
+
 
         return $this->render("@MSPlatform/Admin/addCourse.html.twig", array(
             'form' => $form->createView(),
@@ -60,6 +71,8 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($subject);
             $em->flush();
+            $this->addFlash('success', 'Matière créee!');
+            return $this->redirectToRoute('ms_admin_addSubject');
 
         }
 
@@ -81,6 +94,8 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $this->addFlash('success', 'Filière modifiée!');
+            return $this->redirectToRoute('ms_admin_editCourse', array('id' => $id));
         }
         return $this->render("@MSPlatform/Admin/editCourse.html.twig", array('form'   => $form->createView()));
     }
@@ -99,6 +114,8 @@ class AdminController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em->flush();
+            $this->addFlash('success', 'Matière modifiée!');
+            return $this->redirectToRoute('ms_admin_editSubject', array('id' => $id));
         }
         return $this->render("@MSPlatform/Admin/editSubject.html.twig", array('form'   => $form->createView()));
     }

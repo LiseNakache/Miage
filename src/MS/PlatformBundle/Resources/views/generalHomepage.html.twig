@@ -1,0 +1,16 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} General Homepage {% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block body_forum %}
+    <h3>General Homepage </h3>
+    {% stylesheets 'bundles/msplatform/css/homepage.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+
+{% endblock %}

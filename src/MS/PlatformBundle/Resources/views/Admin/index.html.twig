@@ -31,9 +31,9 @@
         <tbody>
         {% for course in courseslist %}
             <tr>
-                <td>{{ course.type }}</td>
-                <td>{{ course.name }}</td>
-                <td>{{ course.dateStart|date('m/Y') }}-{{ course.dateEnd|date('m/Y') }}</td>
+                <td>{{ course.type}}</td>
+                <td>{{ course.name|capitalize }}</td>
+                <td>{{ course.dateStart|date('d/m/Y') }}-{{ course.dateEnd|date('d/m/Y') }}</td>
 
                 <td>
 
@@ -43,7 +43,7 @@
                             {% if course.subjects is empty %}
                                 <td>Vide</td>
                             {% else %}
-                                <td>{{ subject.name }}{% if not loop.last %}, {% endif %}</td>
+                                <td>{{ subject.name|capitalize }}{% if not loop.last %}, {% endif %}</td>
                             {% endif %}
                         </tr>
                     {% endfor %}
@@ -59,7 +59,7 @@
                                 {% if course.students is empty %}
                                     <td>Vide</td>
                                 {% else %}
-                                    <td>{{ student.firstname }} {{ student.lastname }}{% if not loop.last %}, {% endif %}</td>
+                                    <td>{{ student.firstname|capitalize }} {{ student.lastname|capitalize }}{% if not loop.last %}, {% endif %}</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
@@ -108,15 +108,15 @@
         <tbody>
     {% for subject in subjectslist %}
             <tr>
-                <td>{{ subject.type }}</td>
-                <td>{{ subject.name }}</td>
+                <td>{{ subject.type}}</td>
+                <td>{{ subject.name|capitalize }}</td>
                 <td>{{ subject.coef }}</td>
                 <td>
 
                     <table>
                         {% for teacher in subject.teachers %}
                             <tr>
-                                    <td>{{ teacher.firstname }} {{ teacher.lastname }}{% if not loop.last %}, {% endif %}</td>
+                                    <td>{{ teacher.firstname|capitalize }} {{ teacher.lastname|capitalize }}{% if not loop.last %}, {% endif %}</td>
                             </tr>
                         {% endfor %}
                     </table>

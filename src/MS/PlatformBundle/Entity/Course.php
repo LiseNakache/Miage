@@ -16,8 +16,6 @@ class Course
 {
     public function __construct()
     {
-        $this->dateStart = new \Datetime();
-        $this->dateEnd = new \Datetime('+1 year');
         $this->subjects = new ArrayCollection();
         $this->students = new ArrayCollection();
     }

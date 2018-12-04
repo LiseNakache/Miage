@@ -23,14 +23,21 @@ class CourseType extends AbstractType
     {
         $builder
             ->add('type',  TextType::class)
-            ->add('name',  TextType::class)
+            ->add('name',  TextType::class, array(
+                'label'  => 'Nom'
+            ))
             ->add('dateStart',  DateType::class, array(
                 'widget' => 'single_text',
-                'format' => 'mm-yyyy',
-            ))
+                'format' => 'dd/MM/yyyy',
+                'label'  => 'Début Année Universitaire',
+                'attr' => array('placeholder' => 'jj/mm/aaaa'),
+                ))
+
             ->add('dateEnd',  DateType::class, array(
                 'widget' => 'single_text',
-                'format' => 'mm-yyyy',
+                'format' => 'dd/MM/yyyy',
+                'label'  => 'Fin Année Universitaire',
+                'attr' => array('placeholder' => 'jj/mm/aaaa'),
             ))
             ->add('students', EntityType::class, array(
                 'class'        => 'MSPlatformBundle:Student',
@@ -38,23 +45,19 @@ class CourseType extends AbstractType
                                 return $student->getFirstName() . ' ' . $student->getLastName();},
                 'multiple'     => true,
                 'expanded'     => true,
+                'label'  => 'Etudiants'
             ))
             ->add('subjects', EntityType::class, array(
                 'class'        => 'MSPlatformBundle:Subject',
                 'choice_label' => 'name',
                 'multiple'     => true,
                 'expanded'     => true,
-                'label'  => 'Semestre 1',
+                'label'  => 'Matières',
             ))
 
-            ->add('subjects', EntityType::class, array(
-                'class'        => 'MSPlatformBundle:Subject',
-                'choice_label' => 'name',
-                'multiple'     => true,
-                'expanded'     => true,
-                'label'  => 'Semestre 2',
-            ))
-            ->add('save',      SubmitType::class);
+            ->add('save',      SubmitType::class, array(
+                'label'  => 'Sauvegarder'
+            ));
     }
 
 

@@ -6,6 +6,12 @@
     <h1>Voici la page de l'admin</h1><br>
     <h3>Formulaire modification de la filière</h3>
 
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+
     <div class="well">
         {{ form(form) }}
         <a class="btn btn-default" href="{{ path('ms_admin_university') }}">

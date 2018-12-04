@@ -6,3 +6,6 @@ services:
   redirect.after.login:
     class: MS\PlatformBundle\Listener\AfterLoginRedirection
     arguments: ['@router']
+  logout_success_handler:
+    class: MS\PlatformBundle\Listener\LogoutSuccessHandler
+    arguments: ['@router']

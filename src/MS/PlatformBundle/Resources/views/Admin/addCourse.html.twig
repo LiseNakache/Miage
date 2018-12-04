@@ -6,18 +6,39 @@
     <h1>Voici la page de l'admin</h1><br>
     <h3>Formulaire de la filière</h3>
 
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+
     <div class="well">
         {{ form(form) }}
         <a class="btn btn-default" href="{{ path('ms_admin_university') }}">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour
         </a>
-
-        <a class="btn btn-default" href="{{ path('ms_admin_addCourse') }}">
-            <i class="glyphicon glyphicon-plus"></i>
-            Ajouter d'autres filières
-        </a>
     </div>
 
+    {#//Ajouter des slash lors de l'écriture de dates#}
+    <script>
+    $("#ms_platformbundle_course_dateStart, #ms_platformbundle_course_dateEnd ").keyup(function(e){
+        if (e.keyCode != 8){
+            if ($(this).val().length == 2){
+                $(this).val($(this).val() + "/");
+            } else if ($(this).val().length == 5){
+                $(this).val($(this).val() + "/");
+            }
+        } else {
+            var temp = $(this).val();
+
+            if ($(this).val().length == 5){
+                $(this).val(temp.substring(0,4));
+            } else if ($(this).val().length == 2){
+                $(this).val(temp.substring(0,1));
+            }
+        }
+    });
+    </script>
 {% endblock %}
 
