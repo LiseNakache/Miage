@@ -8,7 +8,7 @@ security:
         ROLE_ADMIN: ROLE_USER
         ROLE_TEACHER: ROLE_USER
         ROLE_STUDENT: ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -36,12 +36,18 @@ security:
             form_login:
                 csrf_token_generator: security.csrf.token_manager
                 success_handler: redirect.after.login
+                require_previous_session: false
             remember_me:
                 secret: '%secret%'
-
+                lifetime: 604800
 
     access_control:
         # require ROLE_ADMIN for /admin*
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/teacher, roles: ROLE_TEACHER }
         - { path: ^/student, roles: ROLE_STUDENT }

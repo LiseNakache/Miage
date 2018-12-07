@@ -7,7 +7,17 @@
 
 
 {% block body_forum %}
-    <h3>General Homepage </h3>
+    <div class="container">
+        <div class="row">
+            <h3>General Homepage </h3>
+        </div>
+
+    {#<h4>Si vous n'avez pas encore de compte : </h4>#}
+    {#<p><a href="{{ path('fos_user_registration_register') }}" class="btn ">Je m'inscris !</a></p>#}
+    {#<p><a href="{{ path('fos_user_security_login') }}">Login</a></p>#}
+
+    </div>
+
     {% stylesheets 'bundles/msplatform/css/homepage.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

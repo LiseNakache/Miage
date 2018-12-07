@@ -60,6 +60,10 @@ ms_student_get_grades:
 ms_teacher_homepage:
     path:     /teacher
     defaults: { _controller: MSPlatformBundle:Teacher:index }
+    options:
+        expose: true
+    requirements:
+        _method: POST
 
 ms_teacher_add_grades:
     path:     /teacher/add
@@ -69,9 +73,13 @@ ms_teacher_add_grades:
     requirements:
         _method: POST
 
-ms_teacher_show_grades:
-    path:     /teacher/showGrades
-    defaults: { _controller: MSPlatformBundle:Teacher:showGrades }
+#ms_teacher_show_student:
+#    path:     /teacher/showStudent
+#    defaults: { _controller: MSPlatformBundle:Teacher:showStudent }
+#    options:
+#        expose: true
+#    requirements:
+#        _method: POST
 
 ms_teacher_edit_grade:
     path:      /teacher/editGrade

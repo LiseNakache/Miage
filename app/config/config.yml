@@ -88,3 +88,4 @@ fos_user:
     registration:
         form:
             type: MS\PlatformBundle\Form\RegistrationFormType
+

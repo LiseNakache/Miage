@@ -32,7 +32,8 @@ $("document").ready(function(){
         buttonClicked_add();
         $.ajax({
             type: "POST",
-            url: Routing.generate('ms_teacher_add_grades'),
+            url: "http://localhost/Miage/web/app_dev.php/teacher/add",
+                // Routing.generate('ms_teacher_add_grades'),
 
             data: {"allGrades" : allGrades, "subjectId" : subject},
             async: true,

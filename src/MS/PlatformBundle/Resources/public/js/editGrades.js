@@ -33,7 +33,8 @@ $("document").ready(function(){
         buttonClicked_edit();
         $.ajax({
             type: "POST",
-            url: Routing.generate('ms_teacher_edit_grade'),
+            url: "http://localhost/Miage/web/app_dev.php/teacher/editGrade",
+                // Routing.generate('ms_teacher_edit_grade'),
             data: {"allGrades_edit" :  allGrades_edit},
             async: true,
 
