@@ -4,10 +4,6 @@
 
 {% block body_forum %}
     <div class="container">
-        <div class="row"><h1>Voici la page de l'enseignant</h1></div>
-        <div class="row">
-            <h3 class="col-md-offset-4 col-md-4">Bonjour {{ teacher.firstname|capitalize }}
-                {{ teacher.lastname|capitalize}}
                 {% for subject in teacher.subjects %}
                     {{ subject.name}}
                     <p class="subject" hidden>{{subject.id}}</p>
@@ -15,81 +11,6 @@
                         {{ course.name }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 {% endfor %}
-            </h3>
-        </div>
-
-        {#<div class="row">#}
-            {#<div class="col-xs-8 col-xs-offset-2">#}
-
-                {#<div class="input-group">#}
-                    {#<div class="input-group-btn search-panel">#}
-                        {#<button type="button" class="btn btn-default dropdown-toggle subject" data-toggle="dropdown">#}
-                            {#<span id="subjectId" class="search_concept_subject">Choisir une matière</span> <span class="caret"></span>#}
-                        {#</button>#}
-                        {#<ul class="dropdown-menu subject" role="menu_subject">#}
-                            {#{% for subject in teacher.subjects %}#}
-                                    {#<li id="{{subject.id}}" >{{ subject.name }}</a></li>#}
-                            {#{% endfor %}#}
-                        {#</ul>#}
-                    {#</div>#}
-                    {#<div class="input-group-btn search-panel">#}
-                        {#<button type="button" class="btn btn-default dropdown-toggle course" data-toggle="dropdown">#}
-                            {#<span id class="search_concept_course">Choisir une filière</span> <span class="caret"></span>#}
-                        {#</button>#}
-                        {#<ul class="dropdown-menu course" role="menu_course">#}
-                            {#{% for subject in teacher.subjects %}#}
-                                {#{% for course in subject.courses %}#}
-                                        {#<li id="{{ course.id}}"> {{ course.name}}</a></li>#}
-                                {#{% endfor %}#}
-                            {#{% endfor %}#}
-                        {#</ul>#}
-                    {#</div>#}
-                    {#<button id="search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>#}
-                {#</div>#}
-            {#</div>#}
-
-        {#</div>#}
-
-        {#<div class="row">#}
-        {#<div class="panel with-nav-tabs panel-default">#}
-            {#<div class="panel-heading">#}
-                {#<ul class="nav nav-tabs">#}
-                    {#<li class="active"><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>#}
-                    {#<li><a href="#edit_grade" data-toggle="tab">Notes ajoutées</a></li>#}
-                    {#<li><a href="#profil" data-toggle="tab">Profil</a></li>#}
-                {#</ul>#}
-            {#</div>#}
-            {#<div class="panel-body">#}
-                {#<div class="tab-content">#}
-                    {#<div class="tab-pane fade in active" id="add_grade">#}
-                        {#<div class="col-md-offset-2 col-md-8 result_add"></div>#}
-                        {#{% include '@MSPlatform/Teacher/addGrades.html.twig' %}#}
-                    {#</div>#}
-                    {#<div class="tab-pane fade" id="edit_grade">#}
-                        {#<div class="col-md-offset-2 col-md-8 result_edit"></div>#}
-                        {#{% include '@MSPlatform/Teacher/editGrades.html.twig' %}#}
-                    {#</div>#}
-                    {#<div class="tab-pane fade" id="profil">Default 3</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-        {#</div>#}
-    {#</div>#}
-
-
-
-    {#{% javascripts filter='?yui_js'#}
-        {#'assets/jquery/jquery.js'#}
-        {#'bundles/fosjsrouting/js/router.js'#}
-        {#'js/fos_js_routes.js'#}
-
-        {#'bundles/msplatform/js/showStudentTeacher.js'#}
-    {#%}#}
-        {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
-
-    {#{% stylesheets 'bundles/msplatform/css/homepage.css' %}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
-    {#{% endstylesheets %}#}
+    </div>
 {% endblock %}
 

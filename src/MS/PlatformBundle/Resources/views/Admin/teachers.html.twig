@@ -1,0 +1,51 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Professeurs{% endblock %}
+
+{% block body_forum %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Type Matière</th>
+            <th>Matière</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for user in userslist %}
+        <tr>
+            {% if "ROLE_TEACHER" in user.roles %}
+            <td>{{ user.firstname|capitalize}} {{ user.lastname|capitalize}}</td>
+            <td>{{ user.email }}</td>
+                {#{% for teacher in teacherslist %}#}
+                    {#{% for subject in teacher.subjects %}#}
+                        {#<td>{{ subject.type }}</td>#}
+                        {#<td>{{ subject.name}}</td>#}
+                    {#{% endfor %}#}
+                {#{% endfor %}#}
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+        {#{% for teacher in teacherslist %}#}
+        {#<tr>#}
+        {#<td>{{teacher.firstname|capitalize}} {{ teacher.lastname|capitalize}}</td>#}
+        {#{% for user in userslist %}#}
+        {#{% if is_granted("ROLE_TEACHER") %}#}
+        {#<td>{{ user.email }}</td>#}
+        {#{% endif %}#}
+        {#{% endfor %}#}
+        {#{% for subject in teacher.subjects %}#}
+        {#<td>{{ subject.type }}</td>#}
+        {#<td>{{ subject.name}}</td>#}
+        {#{% endfor %}#}
+        {#<td>#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        </tbody>
+    </table>
+{% endblock %}
+

@@ -15,6 +15,15 @@ ms_admin_university_subject:
     path:     /admin/subjects
     defaults: { _controller: MSPlatformBundle:Admin:subject }
 
+ms_admin_teachers:
+    path:     /admin/teachers
+    defaults: { _controller: MSPlatformBundle:Admin:teachers }
+
+ms_admin_students:
+    path:     /admin/students
+    defaults: { _controller: MSPlatformBundle:Admin:students }
+
+
 ms_admin_addCourse:
     path:      /admin/addCourse
     defaults: { _controller: MSPlatformBundle:Admin:addCourse }

@@ -5,7 +5,7 @@
 {% block body_forum %}
 
 
-    {#<div class="container">#}
+    <div class="row result_edit"></div>
 
 
             {% for subject in teacher.subjects %}
@@ -19,7 +19,6 @@
                 </tr>
                 </thead>
 
-                {#<div class="row">#}
                 {% for grade in subject.grades %}
                     <form id="form_edit">
                         <tbody>
@@ -35,11 +34,9 @@
                 {% endfor %}
                 {% endfor %}
                     </form>
-                {#</div>#}
             </table>
 
-    <div class="row result_edit"></div>
-    {#</div>#}
+
 
 
     {% javascripts filter='?yui_js'

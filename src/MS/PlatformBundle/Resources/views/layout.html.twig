@@ -26,6 +26,12 @@
                 <li>
                     <a href="{{ path('ms_admin_university_subject') }}">Matières</a>
                 </li>
+                <li>
+                    <a href="{{ path('ms_admin_teachers') }}">Professeurs</a>
+                </li>
+                <li>
+                    <a href="{{ path('ms_admin_students') }}">Etudiants</a>
+                </li>
                 {% elseif is_granted("ROLE_TEACHER") %}
                 <li>
                     <a href="{{ path('ms_teacher_homepage') }}">Acceuil</a>
@@ -34,7 +40,7 @@
                     <a href="{{ path('ms_teacher_show_student') }}">Ajout de Notes</a>
                 </li>
                 <li>
-                    <a href="{{ path('ms_teacher_edit_student') }}">Notes ajoutées</a>
+                    <a href="{{ path('ms_teacher_edit_student') }}">Modification de Notes</a>
                 </li>
                 {% elseif is_granted("ROLE_STUDENT") %}
                 <li>
@@ -60,20 +66,12 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-
-                    {#<div class="container">#}
-                        {#<button type="button" id="sidebarCollapse" class="btn btn-info">#}
-                            {#<i class="fas fa-align-left"></i>#}
-                            {#<span>Toggle Sidebar</span>#}
-                        {#</button>#}
                         <div class="navbar-header">
                             <p class="navbar-text">
                                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                                     <i class="fas fa-align-left"></i>
-                                    {#<span>Toggle Sidebar</span>#}
                                 </button>
                             </p>
-                            {#<a class="navbar-brand" href="#">Miage Simulateur</a>#}
                         </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">

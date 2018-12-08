@@ -33,7 +33,7 @@ class AdminController extends Controller
         //Recherche par ordre alphabetique
         $subjectslist = $em->getRepository('MSPlatformBundle:Subject')->findBy(
             array(),
-            array('type' => 'ASC'));
+            array('type' => 'ASC', 'name' => 'ASC'));
         $courseslist = $em->getRepository('MSPlatformBundle:Course')->findBy(
             array(),
             array('type' => 'ASC'));
@@ -48,10 +48,44 @@ class AdminController extends Controller
         //Recherche par ordre alphabetique
         $subjectslist = $em->getRepository('MSPlatformBundle:Subject')->findBy(
             array(),
-            array('type' => 'ASC'));
+            array('type' => 'ASC', 'name' => 'ASC' ));
         return $this->render("@MSPlatform/Admin/subject.html.twig",
             array('subjectslist' => $subjectslist));
     }
+
+    public function teachersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        //Recherche par ordre alphabetique
+        $teacherslist = $em->getRepository('MSPlatformBundle:Teacher')->findBy(
+            array(),
+            array('last_name' => 'ASC'));
+        $userslist = $em->getRepository('MSPlatformBundle:User')->findBy(
+            array(),
+            array('last_name' => 'ASC'));
+        return $this->render("@MSPlatform/Admin/teachers.html.twig",
+            array('teacherslist' => $teacherslist, 'userslist'=> $userslist));
+    }
+
+    public function studentsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        //Recherche par ordre alphabetique
+        $studentslist = $em->getRepository('MSPlatformBundle:Student')->findBy(
+            array(),
+            array('last_name' => 'ASC'));
+        $userslist = $em->getRepository('MSPlatformBundle:User')->findBy(
+            array(),
+            array('last_name' => 'ASC'));
+        return $this->render("@MSPlatform/Admin/students.html.twig",
+            array('studentslist' => $studentslist, 'userslist'=> $userslist));
+    }
+
+
+
+
+
+
 
     public function addCourseAction(Request $request)
     {

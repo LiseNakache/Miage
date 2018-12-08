@@ -40,7 +40,7 @@
                             {% if course.subjects is empty %}
                                 <td>Vide</td>
                             {% else %}
-                                <td>{{ subject.name|capitalize }}{% if not loop.last %}, {% endif %}</td>
+                                <td>{{ subject.name }}{% if not loop.last %}, {% endif %}</td>
                             {% endif %}
                         </tr>
                     {% endfor %}

@@ -1,10 +1,14 @@
 {% extends "@MSPlatform/layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Index{% endblock %}
+{% block title %}{{ parent() }} - Modification-Filière{% endblock %}
 
-{% block body %}
-    <h1>Voici la page de l'admin</h1><br>
-    <h3>Formulaire modification de la filière</h3>
+{% block body_forum %}
+    <h3>Formulaire de modification d'une filière</h3><br>
+
+    <a class="btn btn-info" href="{{ path('ms_admin_university') }}">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour
+    </a><br>
 
     {% for msg in app.session.flashBag.get('success') %}
         <div class="alert alert-success">
@@ -14,10 +18,6 @@
 
     <div class="well">
         {{ form(form) }}
-        <a class="btn btn-default" href="{{ path('ms_admin_university') }}">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour
-        </a>
     </div>
 
 {% endblock %}

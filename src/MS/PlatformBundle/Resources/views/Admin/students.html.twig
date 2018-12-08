@@ -1,0 +1,39 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Etudiants{% endblock %}
+
+{% block body_forum %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in userslist %}
+            <tr>
+                {% if "ROLE_STUDENT" in user.roles %}
+                    <td>{{ user.firstname|capitalize}} {{ user.lastname|capitalize}}</td>
+                    <td>{{ user.email }}</td>
+                    {#{% for teacher in teacherslist %}#}
+                    {#{% for subject in teacher.subjects %}#}
+                    {#<td>{{ subject.type }}</td>#}
+                    {#<td>{{ subject.name}}</td>#}
+                    {#{% endfor %}#}
+                    {#{% endfor %}#}
+                {% endif %}
+            </tr>
+        {% endfor %}
+        {#{% for student in studentslist %}#}
+            {#<tr>#}
+                {#<td>{{student.firstname|capitalize}} {{ student.lastname|capitalize}}</td>#}
+                {#<td>{{ subject.username }}</td>#}
+                {#<td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        </tbody>
+    </table>
+{% endblock %}
+
