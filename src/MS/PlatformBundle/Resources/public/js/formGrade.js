@@ -26,16 +26,19 @@ var count = function () {
     console.log(average);
 
     if (average < 10){
-    $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+ "Votre moyenne est de " +  average.toFixed(2) + " Vous êtes en rattrapage "+ '<h3>' );
+        $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+ "Votre moyenne est de " +  average.toFixed(2) + " Vous êtes en rattrapage "+ '</h3>' );
+    } else if (average >= 10 && average <= 20 )  {
+        $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+"Votre moyenne est de " +  average.toFixed(2) + " Vous passez en classe supérieure "+ '</h3>'  );
     } else {
-        $('.result').append('<h3 class="col-md-offset-2 col-md-8 alert alert-info" role="alert">'+"Votre moyenne est de " +  average.toFixed(2) + " Vous passez en classe supérieure "+ '<h3>'  );
+        $('.result').append('<h5 class="col-md-offset-2 col-md-8 alert alert-warning" role="alert">'+ "Veuillez entrer des notes entre 0 et 20"+ '</h5>' );
     }
 };
 
 
-$('#button').on('click', function () {
+$('#form_simulation').on('click', function () {
     var grade = $('.grade');
     var coef = $('.coef');
+
 
     for(var i = 0; i < grade.length; i++){
         addItem($(grade[i]).val(), $(coef[i]).text());

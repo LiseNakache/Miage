@@ -1,11 +1,19 @@
-{% extends "@MSPlatform/Student/homepage.html.twig" %}
+{#{% extends "@MSPlatform/Student/homepage.html.twig" %}#}
+{% extends "@MSPlatform/layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Index{% endblock %}
+{% block title %}{{ parent() }} - Simulation{% endblock %}
 
-{% block body %}
-<div class="container">
+{% block body_forum %}
+{#{% block body %}#}
+{#<div class="container">#}
+    <div class="row">
+        {% for course in student.courses %}
+            <span class="final_coef" hidden>{{ course.totalCoef }}</span>
+        {#{% endfor %}#}
+    </div>
 
-    {% for course in student.courses %}
+
+    {#{% for course in student.courses %}#}
 
     <table class="table table-striped">
         <thead>
@@ -17,7 +25,6 @@
         </thead>
 
 
-    <div class="row">
     {% for subject in course.subjects %}
 
     <form action="" method="post">
@@ -33,15 +40,17 @@
         {% endfor %}
 
     </form>
-    </div>
+    {#</div>#}
     </table>
-        <input type="button" name="submit" value="Results" id="button" />
+        <input type="button" name="submit" value="Résultats" id="button" class="btn btn-info" />
 
     <h3 class="result"></h3>
-</div>
+{#</div>#}
 
+
+
+    {#'assets/jquery/jquery.js'#}
     {% javascripts
-        'assets/jquery/jquery.js'
         'bundles/msplatform/js/formGrade.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

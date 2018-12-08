@@ -17,13 +17,14 @@ class AdminController extends Controller
 {
 
 
-//    public function homepageAction(Request $request)
-//    {
-////        $em = $this->getDoctrine()->getManager();
-////        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find(4);
-//        return $this->render("@MSPlatform/Admin/homepage.html.twig");
-////            array('teacher' => $teacher));
-//    }
+    public function homepageAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $user->getId();
+        $admin = $em->getRepository('MSPlatformBundle:User')->find($currentUser);
+        return $this->render("@MSPlatform/Admin/homepage.html.twig", array('admin' => $admin));
+    }
 
 
     public function indexAction()
@@ -38,6 +39,18 @@ class AdminController extends Controller
             array('type' => 'ASC'));
         return $this->render("@MSPlatform/Admin/index.html.twig",
             array('subjectslist' => $subjectslist, 'courseslist' => $courseslist));
+    }
+
+
+    public function subjectAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        //Recherche par ordre alphabetique
+        $subjectslist = $em->getRepository('MSPlatformBundle:Subject')->findBy(
+            array(),
+            array('type' => 'ASC'));
+        return $this->render("@MSPlatform/Admin/subject.html.twig",
+            array('subjectslist' => $subjectslist));
     }
 
     public function addCourseAction(Request $request)

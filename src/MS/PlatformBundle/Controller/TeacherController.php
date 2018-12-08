@@ -28,42 +28,27 @@ class TeacherController extends Controller
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $currentUser = $user->getId();
         $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find($currentUser);
-
-
-        if ($request->isXmlHttpRequest()){
-            print_r('hey');
-            $subjectId = $request->request->get('subjectId');
-            $subject = $em->getRepository('MSPlatformBundle:Subject')->find($subjectId);
-
-            $courseId = $request->request->get('courseId');
-            $course = $em->getRepository('MSPlatformBundle:Course')->find($courseId);
-
-//            return $this->render("@MSPlatform/Teacher/homepage.html.twig",
-//            array('teacher' => $teacher,'subject' => $subject,'course' => $course ));
-            $result = ['output' => 'Les notes ont bien été ajoutées'];
-            return new JsonResponse($result) ;
-        }
-
-
         return $this->render("@MSPlatform/Teacher/homepage.html.twig",array('teacher' => $teacher));
     }
 
 
-//    public function showStudentAction(Request $request)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-////        if ($request->isXmlHttpRequest()){
-//            $subjectId = $request->request->get('subjectId');
-//            $subject = $em->getRepository('MSPlatformBundle:Subject')->find($subjectId);
-//
-//            $courseId = $request->request->get('courseId');
-//            $course = $em->getRepository('MSPlatformBundle:Course')->find($courseId);
-//
-//            return $this->render("@MSPlatform/Teacher/addGrades.html.twig",
-//            array('subject' => $subject,'course' => $course ));
-////        }
-//    }
+    public function showStudentAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $user->getId();
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find($currentUser);
+        return $this->render("@MSPlatform/Teacher/addGrades.html.twig",array('teacher' => $teacher));
+    }
+
+    public function editStudentAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $user->getId();
+        $teacher = $em->getRepository('MSPlatformBundle:Teacher')->find($currentUser);
+        return $this->render("@MSPlatform/Teacher/editGrades.html.twig",array('teacher' => $teacher));
+    }
 
 
 

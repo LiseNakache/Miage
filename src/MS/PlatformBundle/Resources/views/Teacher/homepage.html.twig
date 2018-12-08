@@ -50,46 +50,46 @@
 
         {#</div>#}
 
-        <div class="row">
-        <div class="panel with-nav-tabs panel-default">
-            <div class="panel-heading">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>
-                    <li><a href="#edit_grade" data-toggle="tab">Notes ajoutées</a></li>
-                    <li><a href="#profil" data-toggle="tab">Profil</a></li>
-                </ul>
-            </div>
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="add_grade">
-                        <div class="col-md-offset-2 col-md-8 result_add"></div>
-                        {% include '@MSPlatform/Teacher/addGrades.html.twig' %}
-                    </div>
-                    <div class="tab-pane fade" id="edit_grade">
-                        <div class="col-md-offset-2 col-md-8 result_edit"></div>
-                        {% include '@MSPlatform/Teacher/editGrades.html.twig' %}
-                    </div>
-                    <div class="tab-pane fade" id="profil">Default 3</div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
+        {#<div class="row">#}
+        {#<div class="panel with-nav-tabs panel-default">#}
+            {#<div class="panel-heading">#}
+                {#<ul class="nav nav-tabs">#}
+                    {#<li class="active"><a href="#add_grade" data-toggle="tab">Ajout des notes</a></li>#}
+                    {#<li><a href="#edit_grade" data-toggle="tab">Notes ajoutées</a></li>#}
+                    {#<li><a href="#profil" data-toggle="tab">Profil</a></li>#}
+                {#</ul>#}
+            {#</div>#}
+            {#<div class="panel-body">#}
+                {#<div class="tab-content">#}
+                    {#<div class="tab-pane fade in active" id="add_grade">#}
+                        {#<div class="col-md-offset-2 col-md-8 result_add"></div>#}
+                        {#{% include '@MSPlatform/Teacher/addGrades.html.twig' %}#}
+                    {#</div>#}
+                    {#<div class="tab-pane fade" id="edit_grade">#}
+                        {#<div class="col-md-offset-2 col-md-8 result_edit"></div>#}
+                        {#{% include '@MSPlatform/Teacher/editGrades.html.twig' %}#}
+                    {#</div>#}
+                    {#<div class="tab-pane fade" id="profil">Default 3</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#</div>#}
+    {#</div>#}
 
 
 
-    {% javascripts filter='?yui_js'
-        'assets/jquery/jquery.js'
-        'bundles/fosjsrouting/js/router.js'
-        'js/fos_js_routes.js'
+    {#{% javascripts filter='?yui_js'#}
+        {#'assets/jquery/jquery.js'#}
+        {#'bundles/fosjsrouting/js/router.js'#}
+        {#'js/fos_js_routes.js'#}
 
-        'bundles/msplatform/js/showStudentTeacher.js'
-    %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+        {#'bundles/msplatform/js/showStudentTeacher.js'#}
+    {#%}#}
+        {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
 
-    {% stylesheets 'bundles/msplatform/css/homepage.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    {#{% stylesheets 'bundles/msplatform/css/homepage.css' %}#}
+        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
 {% endblock %}
 

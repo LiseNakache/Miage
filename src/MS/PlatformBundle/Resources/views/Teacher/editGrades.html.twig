@@ -5,8 +5,8 @@
 {% block body_forum %}
 
 
-    <div class="container">
-            <div class="row result"></div>
+    {#<div class="container">#}
+
 
             {% for subject in teacher.subjects %}
             {% for course in subject.courses %}
@@ -19,7 +19,7 @@
                 </tr>
                 </thead>
 
-                <div class="row">
+                {#<div class="row">#}
                 {% for grade in subject.grades %}
                     <form id="form_edit">
                         <tbody>
@@ -30,15 +30,16 @@
                             <td><input type="number" class="grade_edit" value="" min="0" max="20"/></td>
                         </tr>
                     {% endfor %}
-                        <td><input type="submit" value="Modifier" /></td>
+                        <td><input type="submit" class="btn btn-info" value="Modifier" /></td>
                         </tbody>
                 {% endfor %}
                 {% endfor %}
                     </form>
-                </div>
+                {#</div>#}
             </table>
 
-    </div>
+    <div class="row result_edit"></div>
+    {#</div>#}
 
 
     {% javascripts filter='?yui_js'

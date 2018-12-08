@@ -2,8 +2,8 @@
 
 {% block title %}{{ parent() }} - Index{% endblock %}
 
-{% block body %}
-    <div class="container">
+{% block body_forum %}
+    {#<div class="container">#}
 
         {% for course in student.courses %}
 
@@ -17,7 +17,7 @@
                 </thead>
 
 
-                <div class="row">
+                {#<div class="row">#}
                 {% for grade in student.grades %}
                     <tbody>
                     <tr>
@@ -27,9 +27,9 @@
                     </tr>
                     </tbody>
                 {% endfor %}
-                </div>
+                {#</div>#}
             </table>
-        </div>
+        {#</div>#}
 
     {% endfor %}
 
