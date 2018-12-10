@@ -279,4 +279,10 @@ a.article:hover {
     color:#262626;
 }
 
+/*****Jumbotron GeneralHomepage*/
+.jumbotron{
+    text-align: center;
+    background-image: url(../../background_jumbotron.jpg);
+    background-size: cover;
+}
 

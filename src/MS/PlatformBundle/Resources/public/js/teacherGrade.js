@@ -8,7 +8,7 @@ var addGrade = function (grade,student) {
     };
 
     allGrades.push(resutlItem);
-    console.log(allGrades);
+    console.log("La note de l'étudiant " + allGrades.student + "est :" + allGrades.grade);
 };
 
 var buttonClicked_add = function () {
@@ -17,9 +17,9 @@ var buttonClicked_add = function () {
 
     for(var i = 0; i < grade.length; i++){
         addGrade($(grade[i]).val(), $(student[i]).text());
+
+
     }
-
-
 };
 
 //Ajax call to retrieve the grades and the student ID and send them to the controller
@@ -33,13 +33,13 @@ $("document").ready(function(){
         $.ajax({
             type: "POST",
             url: "http://localhost/Miage/web/app_dev.php/teacher/add",
-                // Routing.generate('ms_teacher_add_grades'),
+            // Routing.generate('ms_teacher_add_grades'),
 
             data: {"allGrades" : allGrades, "subjectId" : subject},
             async: true,
 
             success: function (data) {
-                console.log("its working");
+                console.log("La requète est un succès ? : OUI");
                 $('.result_add').append('<h3 class="alert alert-info" role="alert">' + data.output + '<h3>');
 
             },
