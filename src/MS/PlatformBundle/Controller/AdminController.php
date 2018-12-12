@@ -11,6 +11,7 @@ use MS\PlatformBundle\Form\SubjectEditType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use MS\PlatformBundle\Repository\UserRepository;
 
 
 class AdminController extends Controller
@@ -56,15 +57,16 @@ class AdminController extends Controller
     public function teachersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        //Recherche par ordre alphabetique
-        $teacherslist = $em->getRepository('MSPlatformBundle:Teacher')->findBy(
-            array(),
-            array('last_name' => 'ASC'));
-        $userslist = $em->getRepository('MSPlatformBundle:User')->findBy(
-            array(),
-            array('last_name' => 'ASC'));
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('MSPlatformBundle:User');
+
+        $userslist = $repository->FindAllTeacher();
         return $this->render("@MSPlatform/Admin/teachers.html.twig",
-            array('teacherslist' => $teacherslist, 'userslist'=> $userslist));
+            array('userslist'=> $userslist));
+
     }
 
     public function studentsAction()
@@ -73,7 +75,7 @@ class AdminController extends Controller
         //Recherche par ordre alphabetique
         $studentslist = $em->getRepository('MSPlatformBundle:Student')->findBy(
             array(),
-            array('last_name' => 'ASC'));
+            array('first_name'=> 'ASC','last_name' => 'ASC'));
         $userslist = $em->getRepository('MSPlatformBundle:User')->findBy(
             array(),
             array('last_name' => 'ASC'));
@@ -193,7 +195,7 @@ class AdminController extends Controller
         $em->remove($subject);
         $em->flush();
 
-        return $this->redirectToRoute('ms_admin_university');
+        return $this->redirectToRoute('ms_admin_university_subject');
     }
 
 }

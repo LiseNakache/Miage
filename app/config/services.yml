@@ -17,6 +17,14 @@ services:
     app.form.registration:
         class: MS\PlatformBundle\Form\RegistrationFormType
 
+    app.redirect_after_registration:
+        class:  MS\PlatformBundle\Listener\RedirectAfterRegistration
+        autowire: true
+
+    app.authentication_listener:
+        class:  MS\PlatformBundle\Listener\AuthenticationListener
+        autowire: true
+
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:

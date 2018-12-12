@@ -3,75 +3,68 @@
 namespace MS\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
+ * Admin
  *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="MS\PlatformBundle\Repository\UserRepository")
+ * @ORM\Table(name="admin")
+ * @ORM\Entity(repositoryClass="MS\PlatformBundle\Repository\AdminRepository")
  */
-class User extends BaseUser{
+class Admin
+{
+
 
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-
-//    /**
-//     * @var string
-//     *
-//     * @ORM\Column(name="type", type="string", length=255)
-//     */
-//    protected $type;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank()
      */
-    protected $first_name;
+    private $first_name;
+
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank()
      */
-    protected $last_name;
+    private $last_name;
+
+
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Admin
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-//    /**
-//     * Get type
-//     *
-//     * @return string
-//     */
-//    public function getType()
-//    {
-//        return $this->type;
-//    }
-
-    /**
-     * Overridden so that username is now optional
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->setUsername($email);
-        return parent::setEmail($email);
     }
 
     /**
@@ -79,7 +72,7 @@ class User extends BaseUser{
      *
      * @param string $firstName
      *
-     * @return User
+     * @return Admin
      */
     public function setFirstName($firstName)
     {
@@ -103,7 +96,7 @@ class User extends BaseUser{
      *
      * @param string $lastName
      *
-     * @return User
+     * @return Admin
      */
     public function setLastName($lastName)
     {

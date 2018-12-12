@@ -1,0 +1,45 @@
+<?php
+
+namespace MS\PlatformBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Admin
+ *
+ * @ORM\Table(name="admin")
+ * @ORM\Entity(repositoryClass="MS\PlatformBundle\Repository\AdminRepository")
+ */
+class Admin
+{
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $first_name;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $last_name;
+
+
+}

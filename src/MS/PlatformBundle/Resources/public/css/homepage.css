@@ -286,3 +286,15 @@ a.article:hover {
     background-size: cover;
 }
 
+
+
+
+/****Profil check*/
+
+.fa-user-check{
+    color : #41ADF4;
+}
+
+.fa-user-times{
+    color : #F52F44;
+}

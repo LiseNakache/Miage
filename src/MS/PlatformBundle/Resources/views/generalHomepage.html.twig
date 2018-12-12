@@ -12,10 +12,13 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
 
-                        {% if is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("ROLE_ADMIN") and is_granted("ROLE_TEACHER")  %}
                             <p class="navbar-text">
                                 <a href="{{ path('ms_admin_homepage') }}">Acceuil</a>
                             </p>
+                            {#<p class="navbar-text">#}
+                                {#<a href="{{ path('ms_teacher_homepage') }}">Acceuil Professeur</a>#}
+                            {#</p>#}
                         {% elseif is_granted("ROLE_TEACHER") %}
                             <p class="navbar-text">
                                 <a href="{{ path('ms_teacher_homepage') }}">Acceuil</a>
@@ -29,15 +32,17 @@
                         <p class="navbar-text">
                             {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                         </p>
+                        {#{% if is_granted("ROLE_ADMIN") %}#}
+                            {#<li>#}
+                                {#<a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>#}
+                            {#</li>#}
+                        {#{% endif %}#}
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">
                                 {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                             </a>
                         </li>
                     {% else %}
-                        <li>
-                            <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
-                        </li>
                         <li>
                             <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                         </li>

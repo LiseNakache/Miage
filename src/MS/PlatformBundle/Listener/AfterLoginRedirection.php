@@ -42,6 +42,11 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             return $role->getRole();
         }, $roles);
 
+//        if (in_array('ROLE_ADMIN', $rolesTab, true) && in_array('ROLE_TEACHER', $rolesTab, true)) {
+//            // c'est un aministrateur : on le rediriger vers l'espace admin
+//            $redirection = new RedirectResponse($this->router->generate('ms_platform_homepage'));
+//        }
+//        else
         if (in_array('ROLE_ADMIN', $rolesTab, true)) {
             // c'est un aministrateur : on le rediriger vers l'espace admin
             $redirection = new RedirectResponse($this->router->generate('ms_admin_homepage'));

@@ -1,9 +1,29 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-{% block fos_user_content %}
+{% extends "@MSPlatform/layout.html.twig" %}
+{% block body_forum %}
 
     {% trans_default_domain 'FOSUserBundle' %}
 
-    <div class="container form-signin">
+    {#{% if app.request.hasPreviousSession %}#}
+        {#<p class="felicitation">{{ 'registration.confirmed'}}</p>#}
+    {#{% endif %}#}
+    {#{% for msg in app.session.flashBag.get('success') %}#}
+        {#<div class="alert alert-success">#}
+            {#{{ msg }}#}
+        {#</div>#}
+    {#{% endfor %}#}
+
+    {#{% if app.request.hasPreviousSession %}#}
+        {#{% for type, messages in app.session.flashbag.all() %}#}
+            {#{% for message in messages %}#}
+                {#<div class="flash-{{ type }}">#}
+                    {#{{ message }}#}
+                {#</div>#}
+            {#{% endfor %}#}
+        {#{% endfor %}#}
+    {#{% endif %}#}
+
+
+    <div class="form-signin">
         <h1>Formulaire d'Inscription</h1>
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
         {{ form_widget(form) }}
@@ -12,31 +32,63 @@
         </div>
         {{ form_end(form) }}
     </div>
-{% endblock fos_user_content %}
+
+    <script>
+        $("document").ready(function(){
+            var student = $("#fos_user_registration_form_roles_2");
+            var admin =  $('#fos_user_registration_form_roles_0');
+            var teacher = $('#fos_user_registration_form_roles_1');
+
+            admin.on('change', function(){
+                if ($(this).is(':checked')) {
+                    student.prop('disabled', true);
+                } else if (!$(this).is(':checked')) {
+                    student.prop('disabled', false);
+                }
+            });
+
+            student.bind('change', function(){
+                if ($(this).is(':checked')) {
+                   admin.prop('disabled', true);
+                   teacher.prop('disabled', true);
+                } else if (!$(this).is(':checked')) {
+                    admin.prop('disabled', false);
+                    teacher.prop('disabled', false);
+                }
+            });
+
+            teacher.bind('change', function(){
+                if ($(this).is(':checked')) {
+                    student.prop('disabled', true);
+                } else if (!$(this).is(':checked')) {
+                    student.prop('disabled', false);
+                }
+            });
+        })
+    </script>
+
+
+{% endblock body_forum %}
+
+
+
+
+
+
+
 
 {% block stylesheets %}
     <style>
         body {
-            /*padding-top: 40px;*/
-            /*padding-bottom: 40px;*/
             background-color: #eee;
         }
         .form-signin {
-            max-width: 500px;
-            padding: 15px;
-            margin: 0 auto;
+            max-width: 404px;
         }
-        /*.form-signin .form-signin-heading,*/
-        /*.form-signin .checkbox {*/
-            /*margin-bottom: 10px;*/
-            /*text-align: center;*/
-        /*}*/
         .form-signin .checkbox {
             font-weight: normal;
         }
         .form-signin .form-control {
-            position: relative;
-            height: auto;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -48,13 +100,9 @@
         }
         .form-signin input[type="email"] {
             margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
         }
         .form-signin input[type="password"] {
             margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
         }
     </style>
 {% endblock %}
