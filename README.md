@@ -13,7 +13,6 @@ Miage
   - Ajout de Professeurs et d'Etudiants
 
  
-![admin](https://user-images.githubusercontent.com/30896388/50003346-00f03480-ffac-11e8-97ea-e61139afbc15.png)
 
 ![filieres](https://user-images.githubusercontent.com/30896388/50003347-00f03480-ffac-11e8-9654-576ff025acc3.png)
 
@@ -26,8 +25,7 @@ Miage
   - Ajout de note
   - Modification de note
   
-  ![prof](https://user-images.githubusercontent.com/30896388/50003541-aacfc100-ffac-11e8-8ca3-f0e52d73e287.png)
-  
+
 ![ajout](https://user-images.githubusercontent.com/30896388/50003544-ac998480-ffac-11e8-8970-2af7313f117e.png)
 
 ![ifier](https://user-images.githubusercontent.com/30896388/50003549-aefbde80-ffac-11e8-96ea-04135a244d84.png)
