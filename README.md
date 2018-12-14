@@ -3,14 +3,15 @@ Miage
 
 ## Un projet de developpement pour M1 E-Miage en Symfony. 
 
+ ![homepage](https://user-images.githubusercontent.com/30896388/50003319-f2098200-ffab-11e8-9fde-109c0428f26a.png)
+
 ### Fonctionnalités : 
 1. Connexion/Inscription/Deconnexion/Profil des Utilisateurs
 
 2. **Page Administrateur**
   - Ajout de Filières et matières
   - Ajout de Professeurs et d'Etudiants
-  
- ![homepage](https://user-images.githubusercontent.com/30896388/50003319-f2098200-ffab-11e8-9fde-109c0428f26a.png)
+
  
 ![admin](https://user-images.githubusercontent.com/30896388/50003346-00f03480-ffac-11e8-97ea-e61139afbc15.png)
 
@@ -36,4 +37,8 @@ Miage
 4. **Page Etudiant**
   - Consultation des notes
   - Simulation des notes 
+
+![consu](https://user-images.githubusercontent.com/30896388/50003847-c5ef0080-ffad-11e8-994b-885f995a9716.png)
+
+![simu](https://user-images.githubusercontent.com/30896388/50003848-c5ef0080-ffad-11e8-8d7a-97edcc2ee3c4.png)
 
