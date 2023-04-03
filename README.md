@@ -1,9 +1,9 @@
 Miage
 =====
 
-Toutes les explications se trouvent dans le [PowerPoint](https://github.com/LiseNakache/Miage/blob/master/PROJET%20DE%20DEVELOPPEMENT%20M1%20MIAGE.pptx)
+**Toutes les explications se trouvent dans le [PowerPoint](https://github.com/LiseNakache/Miage/blob/master/PROJET%20DE%20DEVELOPPEMENT%20M1%20MIAGE.pptx)**
 
-=====
+----
 
 ## Un projet de developpement pour M1 Miage en Symfony. 
 
