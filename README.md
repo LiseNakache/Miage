@@ -1,7 +1,7 @@
 Miage
 =====
 
-## Un projet de developpement pour M1 E-Miage en Symfony. 
+## Un projet de developpement pour M1 Miage en Symfony. 
 
  ![homepage](https://user-images.githubusercontent.com/30896388/50003319-f2098200-ffab-11e8-9fde-109c0428f26a.png)
 
