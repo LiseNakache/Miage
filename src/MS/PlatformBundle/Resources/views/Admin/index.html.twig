@@ -1,0 +1,98 @@
+{% extends "@MSPlatform/Admin/homepage.html.twig" %}
+
+{% block title %}{{ parent() }} - Filières{% endblock %}
+
+{% block body_forum %}
+    <h2>Filière
+        <a class="btn btn-info" href="{{ path('ms_admin_addCourse') }}">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
+    </h2>
+
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>TYPE</th>
+            <th>FILIERE</th>
+            <th>ANNEE SCOLAIRE</th>
+            <th>MATIERES</th>
+            <th>COEFFICIENT TOTAL</th>
+            <th>NOMBRE DE MATIERE</th>
+            <th>ETUDIANTS</th>
+            <th>NOMBRE D'ETUDIANT</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for course in courseslist %}
+            <tr>
+                <td>{{ course.type}}</td>
+                <td>{{ course.name|capitalize }}</td>
+                <td>{{ course.dateStart|date('d/m/Y') }}-{{ course.dateEnd|date('d/m/Y') }}</td>
+
+                <td>
+
+                    <table>
+                    {% for subject in course.subjects %}
+                        <tr>
+                            {% if course.subjects is empty %}
+                                <td>Vide</td>
+                            {% else %}
+                                <td>{{ subject.name }}{% if not loop.last %}, {% endif %}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                        {#<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>#}
+                        {#<div id="demo" class="collapse">#}
+                            {#Lorem ipsum dolor sit amet, consectetur adipisicing elit,#}
+                            {#sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,#}
+                            {#quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.#}
+                        {#</div>#}
+                    </table>
+                </td>
+                <td>{{ course.totalCoef }}</td>
+                <td>{{ course.totalSubjects }}</td>
+                <td>
+
+                    <table>
+                        {% for student in course.students %}
+                            <tr>
+                                {% if course.students is empty %}
+                                    <td>Vide</td>
+                                {% else %}
+                                    <td>{{ student.firstname|capitalize }} {{ student.lastname|capitalize }}{% if not loop.last %}, {% endif %}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+                <td>{{ course.totalStudents }}</td>
+
+
+                <td>
+                    <a class="btn btn-info" href="{{ path('ms_admin_editCourse', {'id': course.id}) }}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('ms_admin_deleteCourse', {'id': course.id}) }}">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+{% endblock %}
+

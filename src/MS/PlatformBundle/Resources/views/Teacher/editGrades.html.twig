@@ -1,0 +1,51 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block body_forum %}
+
+
+    <div class="row result_edit"></div>
+
+
+            {% for subject in teacher.subjects %}
+            {% for course in subject.courses %}
+            <table class="table table-stripped table-hover">
+                <thead>
+                <tr>
+                    <th>Nom de l'Etudiant</th>
+                    <th>Note actuelle</th>
+                    <th>Nouvelle note</th>
+                </tr>
+                </thead>
+
+                {% for grade in subject.grades %}
+                    <form id="form_edit">
+                        <tbody>
+                        <tr>
+                            <p class="grade_id" hidden>{{ grade.id }}</p>
+                            <td>{{ grade.student.firstname}} {{ grade.student.lastname}}</td>
+                            <td>{{ grade.grade}}</td>
+                            <td><input type="number" class="grade_edit" value="" min="0" max="20"/></td>
+                        </tr>
+                    {% endfor %}
+                        <td><input type="submit" class="btn btn-info" value="Modifier" /></td>
+                        </tbody>
+                {% endfor %}
+                {% endfor %}
+                    </form>
+            </table>
+
+
+
+
+    {% javascripts filter='?yui_js'
+        'bundles/fosjsrouting/js/router.js'
+        'js/fos_js_routes.js'
+        'assets/jquery/jquery.js'
+        'bundles/msplatform/js/editGrades.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}

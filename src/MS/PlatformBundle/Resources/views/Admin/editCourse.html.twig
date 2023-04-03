@@ -1,0 +1,23 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Modification-Filière{% endblock %}
+
+{% block body_forum %}
+    <h3>Formulaire de modification d'une filière</h3><br>
+
+    <a class="btn btn-info" href="{{ path('ms_admin_university') }}">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour
+    </a><br>
+
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+    <div class="well">
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

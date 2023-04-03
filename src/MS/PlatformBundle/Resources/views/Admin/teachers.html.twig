@@ -1,0 +1,34 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Professeurs{% endblock %}
+
+{% block body_forum %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Professeur</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for user in userslist %}
+        <tr>
+            <td>{{ user.firstname|capitalize}} {{ user.lastname|capitalize}}</td>
+            <td>{{ user.email }}</td>
+            {% if "ROLE_ADMIN" in user.roles%}
+                <td><i class="fas fa-user-check"></i></td>
+                <td><i class="fas fa-user-check"></i></td>
+            {% else %}
+                <td><i class="fas fa-user-times"></i></td>
+                <td><i class="fas fa-user-check"></i></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

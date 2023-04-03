@@ -1,0 +1,36 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block body_forum %}
+    {#<div class="container">#}
+
+        {% for course in student.courses %}
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Matière</th>
+                    <th>Coefficient</th>
+                    <th>NOTE</th>
+                </tr>
+                </thead>
+
+
+                {#<div class="row">#}
+                {% for grade in student.grades %}
+                    <tbody>
+                    <tr>
+                        <td><label for="subjectName">{{ grade.subject.name }}</label></td>
+                        <td class="coef">{{ grade.subject.coef}}</td>
+                        <td class="note">{{ grade.grade}}</td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+                {#</div>#}
+            </table>
+        {#</div>#}
+
+    {% endfor %}
+
+{% endblock %}

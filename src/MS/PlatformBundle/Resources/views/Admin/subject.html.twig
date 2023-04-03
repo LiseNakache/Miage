@@ -1,0 +1,55 @@
+{% extends "@MSPlatform/Admin/homepage.html.twig" %}
+
+{% block title %}{{ parent() }} - Matières{% endblock %}
+
+{% block body_forum %}
+        <h2>Matières
+            <a class="btn btn-info" href="{{ path('ms_admin_addSubject') }}">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </h2>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>TYPE</th>
+                <th>MATIERE</th>
+                <th>COEFFICIENT</th>
+                <th>PROFESSEUR</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for subject in subjectslist %}
+                <tr>
+                    <td>{{ subject.type}}</td>
+                    <td>{{ subject.name|capitalize }}</td>
+                    <td>{{ subject.coef }}</td>
+                    <td>
+
+                        <table>
+                            {% for teacher in subject.teachers %}
+                                <tr>
+                                    <td>{{ teacher.firstname|capitalize }} {{ teacher.lastname|capitalize }}{% if not loop.last %}, {% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('ms_admin_editSubject', {'id': subject.id}) }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('ms_admin_deleteSubject', {'id': subject.id}) }}">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajout-Filière{% endblock %}
+
+{% block body_forum %}
+    <h3>Formulaire ajout d'une filière</h3><br>
+
+    <a class="btn btn-info" href="{{ path('ms_admin_university') }}">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour
+    </a><br>
+
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+    <div class="well">
+        {{ form(form) }}
+    </div>
+
+    {#//Ajouter des slash lors de l'écriture de dates#}
+    <script>
+    $("#ms_platformbundle_course_dateStart, #ms_platformbundle_course_dateEnd ").keyup(function(e){
+        if (e.keyCode != 8){
+            if ($(this).val().length == 2){
+                $(this).val($(this).val() + "/");
+            } else if ($(this).val().length == 5){
+                $(this).val($(this).val() + "/");
+            }
+        } else {
+            var temp = $(this).val();
+
+            if ($(this).val().length == 5){
+                $(this).val(temp.substring(0,4));
+            } else if ($(this).val().length == 2){
+                $(this).val(temp.substring(0,1));
+            }
+        }
+    });
+    </script>
+{% endblock %}
+

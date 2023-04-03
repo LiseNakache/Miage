@@ -1,0 +1,16 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Teacher{% endblock %}
+
+{% block body_forum %}
+    <div class="container">
+                {% for subject in teacher.subjects %}
+                    {{ subject.name}}
+                    <p class="subject" hidden>{{subject.id}}</p>
+                    {% for course in subject.courses %}
+                        {{ course.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                {% endfor %}
+    </div>
+{% endblock %}
+

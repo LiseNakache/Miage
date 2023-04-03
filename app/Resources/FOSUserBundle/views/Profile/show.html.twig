@@ -1,0 +1,22 @@
+{% extends "@MSPlatform/layout.html.twig" %}
+
+{#{% block fos_user_content %}#}
+{% block body_forum %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="card">
+        <div class="box">
+            <div class="img">
+                <i class="fas fa-user-circle fa-7x"></i>
+            </div>
+            <br>
+            <p><strong>Prénom: </strong>{{ user.firstname|capitalize }}</p>
+            <p><strong>Nom: </strong> {{ user.lastname|capitalize }}</p>
+            <p><strong>{{ 'profile.show.username'|trans }}: </strong>{{ user.username }}</p>
+            <p><strong>{{ 'profile.show.email'|trans }}: </strong>{{ user.email }}</p>
+        </div>
+    </div>
+
+
+{#{% endblock fos_user_content %}#}
+{% endblock %}
